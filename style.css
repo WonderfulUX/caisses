@@ -1,0 +1,316 @@
+/* RESET END*/
+body *, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body button:active, body button:focus, input[type=submit]:active, input[type=submit]:focus,
+input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus, textarea:focus {
+  outline: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* RESET END*/
+body {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #52515c;
+  color: #424242;
+  font-family: 'Mulish', sans-serif;
+}
+
+h2, h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+h3 {
+  opacity: 0.5;
+}
+
+header #Info {
+  background-color: #f6f6f6;
+  padding: 10px 14px 10px 20px;
+  border-radius: 6px;
+}
+
+header #Info #Date {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+header #Network {
+  padding: 10px 15px;
+  background-color: #7e7d8c;
+  border-radius: 6px;
+  color: #f6f6f6;
+}
+
+header #Network #LocalStatus::before, header #Network #InternetStatus::before {
+  content: url(./ressources/NetworkStatus.svg);
+  margin-right: 4px;
+}
+
+#Main {
+  height: 75vh;
+}
+
+#Main > div {
+  background-color: #f6f6f6;
+  height: 100%;
+  border-radius: 6px;
+}
+
+#Main #Produits {
+  width: 50%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#Main #Produits::-webkit-scrollbar {
+  width: 10px;
+}
+
+#Main #Produits::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#Main #Produits::-webkit-scrollbar-thumb {
+  background-color: #7e7d8c;
+  border-radius: 6px;
+}
+
+#Main #Produits .dragList {
+  overflow-x: scroll;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+#Main #Produits .itemList {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#Main #Produits .dragList::-webkit-scrollbar {
+  display: none;
+}
+
+#Main #Produits li {
+  height: 80px;
+  width: 120px;
+  background-color: #fa8585;
+  color: #424242;
+  font-size: 13px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#Main #Produits .productDetails {
+  height: 40px;
+  background-color: #d9d9d9;
+  letter-spacing: 0.3px;
+}
+
+#Main #Produits #SubCategories li {
+  background-color: #fabf85;
+  color: #424242;
+}
+
+#Main #Produits #ProductList {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#Main #Produits #ProductList li {
+  height: 120px;
+}
+
+#Main #Produits #SearchInput {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-left: 3%;
+}
+
+#Main #Produits .selected, #Main #Produits #SubCategories .selected {
+  -webkit-box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
+  background-color: #f8b312;
+  color: #f6f6f6;
+}
+
+#Main #Selection {
+  width: 50%;
+  margin-left: 10px;
+  position: relative;
+}
+
+#Main #Selection thead {
+  height: 30px;
+  background-color: #7e7d8c;
+  color: #f6f6f6;
+  line-height: 30px;
+}
+
+#Main #Selection tr {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 30% 10% 10% 15% 15%;
+      grid-template-columns: 20% 30% 10% 10% 15% 15%;
+}
+
+#Main #Selection tbody, #Main #Selection thead {
+  width: 98%;
+}
+
+#Main #Selection tbody tr {
+  position: relative;
+  height: 40px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  line-height: 40px;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+#Main #Selection tbody tr::after {
+  content: url(./ressources/close.svg);
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#Main #Selection .producStock, #Main #Selection .productQuantity, #Main #Selection .productPrice, #Main #Selection .productSubTotal {
+  text-align: right;
+  padding-right: 10%;
+}
+
+#Main #Selection .productReference, #Main #Selection .productName {
+  padding-left: 5%;
+}
+
+#Main #Selection #Summary {
+  position: absolute;
+  bottom: 20px;
+  right: 1rem;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#Main #Selection #PaymentButton {
+  background-color: #00A400;
+  color: #f6f6f6;
+  border-radius: 6px;
+  border: none;
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+#Main #Selection #PaymentButton span {
+  display: inline-block;
+}
+
+#Main #Selection #PaymentButton span::before {
+  content: url(./ressources/CarteBancaire.svg);
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+#Main #Selection #TotalAmount {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+#Main #Selection #TotalValue {
+  display: inline-block;
+  margin-left: 10px;
+  width: 120px;
+  text-align: right;
+}
+
+#Main #SearchBlock {
+  width: 60%;
+  position: relative;
+}
+
+#Main #SearchBlock input {
+  display: block;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid #c4c4c4;
+}
+
+#Main #SearchBlock button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #007f90;
+}
+
+footer button {
+  border: none;
+  color: #f6f6f6;
+  background-color: #007f90;
+  width: 100px;
+  height: 90px;
+  border-radius: 6px;
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+footer #LogOut {
+  background-color: #e00000;
+}
+/*# sourceMappingURL=style.css.map */
