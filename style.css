@@ -76,6 +76,10 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 
 #Main {
   height: 75vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 #Main > div {
@@ -84,8 +88,24 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   border-radius: 6px;
 }
 
+#Main #displayProductsBtn {
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  color: #f6f6f6;
+  background-color: #940548;
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+
 #Main #Produits {
-  width: 50%;
+  width: 0%;
+  opacity: 0;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -142,8 +162,12 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Produits .productDetails {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   height: 40px;
-  background-color: #fef7e6;
+  background-color: rgba(0, 0, 0, 0.53);
   letter-spacing: 0.3px;
 }
 
@@ -157,7 +181,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Produits #ProductList li {
-  color: #424242;
+  color: #f6f6f6;
   height: 120px;
 }
 
@@ -176,7 +200,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Selection {
-  width: 50%;
+  width: 100%;
   margin-left: 10px;
   position: relative;
 }
