@@ -127,9 +127,10 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 #Main #Produits li {
   height: 80px;
   width: 120px;
-  background-color: #fa8585;
-  color: #424242;
+  background-color: #525252;
+  color: #f6f6f6;
   font-size: 13px;
+  font-weight: 300;
   border-radius: 6px;
   text-transform: uppercase;
   -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -142,13 +143,12 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 
 #Main #Produits .productDetails {
   height: 40px;
-  background-color: #d9d9d9;
+  background-color: #fef7e6;
   letter-spacing: 0.3px;
 }
 
 #Main #Produits #SubCategories li {
-  background-color: #fabf85;
-  color: #424242;
+  background-color: #A5A5A5;
 }
 
 #Main #Produits #ProductList {
@@ -157,6 +157,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Produits #ProductList li {
+  color: #424242;
   height: 120px;
 }
 
