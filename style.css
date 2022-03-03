@@ -52,21 +52,9 @@ h3 {
   opacity: 0.5;
 }
 
-header #Info {
-  background-color: #f6f6f6;
-  padding: 10px 14px 10px 20px;
-  border-radius: 6px;
-}
-
-header #Info #Date {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-header #Network {
-  padding: 10px 15px;
-  background-color: #7e7d8c;
-  border-radius: 6px;
+header {
   color: #f6f6f6;
+  background-color: #242429;
 }
 
 header #Network #LocalStatus::before, header #Network #InternetStatus::before {
@@ -74,12 +62,23 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   margin-right: 4px;
 }
 
+.defaultGrid {
+  -ms-grid-columns: 0% 99%;
+      grid-template-columns: 0% 99%;
+}
+
+.newGrid {
+  -ms-grid-columns: 69% 30%;
+      grid-template-columns: 69% 30%;
+}
+
 #Main {
-  height: 75vh;
+  height: 80vh;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -webkit-transition: display linear 0.3s;
+  transition: display linear 0.3s;
 }
 
 #Main > div {
@@ -90,7 +89,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 
 #Main #displayProductsBtn {
   position: absolute;
-  top: -1rem;
+  top: -0.6rem;
   left: 0;
   color: #f6f6f6;
   background-color: #940548;
@@ -104,8 +103,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Produits {
-  width: 0%;
-  opacity: 0;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -215,8 +213,8 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 #Main #Selection tr {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% 30% 10% 10% 15% 15%;
-      grid-template-columns: 20% 30% 10% 10% 15% 15%;
+  -ms-grid-columns: 20% 30% 10% 10% 15% 15% 40px;
+      grid-template-columns: 20% 30% 10% 10% 15% 15% 40px;
 }
 
 #Main #Selection tbody, #Main #Selection thead {
@@ -235,15 +233,14 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   cursor: pointer;
 }
 
-#Main #Selection tbody tr::after {
-  content: url(./ressources/close.svg);
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  top: 50%;
-  right: -20px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+#Main #Selection tr button {
+  border: none;
+  background-color: transparent;
+  width: 40px;
+}
+
+#Main #Selection tr button img {
+  pointer-events: none;
 }
 
 #Main #Selection .producStock, #Main #Selection .productQuantity, #Main #Selection .productPrice, #Main #Selection .productSubTotal {

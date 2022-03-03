@@ -13,7 +13,7 @@
 </head>
 <body>
     <!--------- HEADER----------->
-    <header class="row justify-content-between w-100 align-items-center py-2 px-3">
+    <header class="row justify-content-between w-100 align-items-center">
         <!--LEFT-->
         <div id="Info" class="d-flex w-auto" >
             <span id="vendor-name" class="d-inline-block me-4 w-auto fw-bold">Boris Boulogne</span>
@@ -22,7 +22,7 @@
         </div>
         <!--RIGHT-->
         <div id="Network" class="d-flex w-auto">
-            <img src="./ressources/Network.svg">
+            <!-- <img src="./ressources/Network.svg"> -->
             <span id="LocalStatus" class="d-inline-block ms-3">Local</span>
             <span id="InternetStatus" class="d-inline-block ms-3">Internet</span>
         </div>
@@ -30,7 +30,7 @@
     <h1 class="d-none">caisses</h1>
     <!--------- MAIN----------->
     <!-- <section id="Main" class="d-flex justify-content-between w-100 px-3"> -->
-    <section id="Main" class="w-100 px-3">
+    <section id="Main" class="w-100 px-3 defaultGrid">
         <button id="displayProductsBtn"  class="d-flex flex-column align-items-center justify-content-center">
             <img src="./ressources/products.svg" alt="">
             <span>Produits</span>
@@ -156,46 +156,66 @@
             <table class="d-flex w-100 flex-column">
                 <thead>
                     <tr>
-                        <td class="productReference">Code Barre</td>
+                        <td class="productReference toHide">Code Barre</td>
                         <td class="productName">Nom</td>
-                        <td class="producStock">Stock</td>
+                        <td class="productStock toHide">Stock</td>
                         <td class="productQuantity">Qté</td>
-                        <td class="productPrice">Prix Un.</td>
-                        <td class="productSubTotal">Montant</td>
+                        <td class="productPrice toHide">Prix Un.</td>
+                        <td class="productSubTotal toHide">Montant</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="productReference">332415527</td>
+                        <td class="productReference toHide">654234748</td>
                         <td class="productName">Café allongé</td>
-                        <td class="producStock">10</td>
-                        <td class="productQuantity">5</td>
-                        <td class="productPrice">3,90 €</td>
-                        <td class="productSubTotal">3,90 €</td>
+                        <td class="productStock toHide">15</td>
+                        <td class="productQuantity">1</td>
+                        <td class="productPrice toHide">3,90 €</td>
+                        <td class="productSubTotal toHide">3,90 €</td>
+                        <td class="toHide">
+                            <button class="removeSelection">
+                                <img src="./ressources/close.svg" alt="">
+                            </button>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="productReference">332415527</td>
-                        <td class="productName">Café allongé</td>
-                        <td class="producStock">10</td>
-                        <td class="productQuantity">5</td>
-                        <td class="productPrice">3,90 €</td>
-                        <td class="productSubTotal">3,90 €</td>
+                        <td class="productReference toHide">451235487</td>
+                        <td class="productName">Cappuchino</td>
+                        <td class="productStock toHide">20</td>
+                        <td class="productQuantity">1</td>
+                        <td class="productPrice toHide">2,80 €</td>
+                        <td class="productSubTotal toHide">2,80 €</td>
+                        <td class="toHide">
+                            <button class="removeSelection">
+                                <img src="./ressources/close.svg" alt="">
+                            </button>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="productReference">332415527</td>
-                        <td class="productName">Café allongé</td>
-                        <td class="producStock">10</td>
-                        <td class="productQuantity">5</td>
-                        <td class="productPrice">3,90 €</td>
-                        <td class="productSubTotal">3,90 €</td>
+                        <td class="productReference toHide">984535215</td>
+                        <td class="productName">Café latté</td>
+                        <td class="productStock toHide">25</td>
+                        <td class="productQuantity">1</td>
+                        <td class="productPrice toHide">3,50 €</td>
+                        <td class="productSubTotal toHide">3,50 €</td>
+                        <td class="toHide">
+                            <button class="removeSelection">
+                                <img src="./ressources/close.svg" alt="">
+                            </button>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="productReference">332415527</td>
-                        <td class="productName">Café allongé</td>
-                        <td class="producStock">10</td>
-                        <td class="productQuantity">5</td>
-                        <td class="productPrice">3,90 €</td>
-                        <td class="productSubTotal">3,90 €</td>
+                        <td class="productReference toHide">332415527</td>
+                        <td class="productName">Café serré</td>
+                        <td class="productStock toHide">30</td>
+                        <td class="productQuantity">1</td>
+                        <td class="productPrice toHide">2,50 €</td>
+                        <td class="productSubTotal toHide">2,50 €</td>
+                        <td class="toHide">
+                            <button class="removeSelection">
+                                <img src="./ressources/close.svg" alt="">
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -211,7 +231,7 @@
         </div>
     </section>
     <!--------- FOOTER----------->
-    <footer class="row justify-content-between w-100 py-2 px-3">
+    <footer class="row justify-content-between w-100 p-1">
         <!--LEFT-->
         <div id="PrimaryActions" class=" d-flex w-auto px-0">
             <button id="LockScreen" class="d-flex flex-column align-items-center justify-content-center me-1">

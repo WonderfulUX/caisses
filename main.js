@@ -3,25 +3,40 @@ let cliquableCategories = document.querySelectorAll('.itemList li');
 let cliquableProducts = document.querySelectorAll('.itemList li');
 let productDisplayBtn = document.getElementById('displayProductsBtn');
 let selectionBlock = document.getElementById('Selection');
-let productBlock = document.querySelector('#Main #Produits');
+let productBlock = document.querySelector('#Main');
 let posX, xOffset, startingPoint, xScrollOffset ;
 let productBlockDiplay = false;
+let removeSelectionBtns = document.querySelectorAll('.removeSelection');
+let tableRows = document.querySelectorAll('#Selection tr');
 
 
 //DISPLAY PRODUCTS
 productDisplayBtn.addEventListener('click', ()=>{
-    if(productBlockDiplay){
-        productBlock.style.width = "0%";
-        productBlock.style.opacity = "0";
-        selectionBlock.style.width = "100%";
-        productBlockDiplay = false;
+    productBlock.classList.toggle('newGrid');
+    if(productBlock.classList.contains('newGrid')){
+
+        cells = document.querySelectorAll('.toHide');
+        cells.forEach(cell=>{
+            cell.style.display= 'none';
+        })
+        tableRows.forEach(row=>{
+            row.style.gridTemplateColumns= "50% 50%";
+        });
     }
     else{
-        productBlock.style.width = '70%';
-        productBlock.style.opacity = "1";
-        selectionBlock.style.width = "30%";
-        productBlockDiplay = true;
+        tableRows.forEach(row=>{
+            row.style.gridTemplateColumns= "20% 30% 10% 10% 15% 15% 40px";
+        });
+        cells.forEach(cell=>{
+            cell.style.display= 'block';
+        })
     }
+});
+
+removeSelectionBtns.forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+        e.target.parentElement.parentElement.remove();
+    });
 });
 
 

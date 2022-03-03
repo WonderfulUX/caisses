@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #Body{
+        width: 100%;
+        height: 100vh;
+        display: grid;
+    }
+    #div1{
+        background-color: red;
+        height: 50vh;
+    }
+    #div2{
+        background-color: green;
+        height: 50vh;
+    }
+    .expanded{
+        width: 70%;
+    }
+    .oldGrid{
+        grid-template-columns: 50% 50%;
+    }
+    .newGrid{
+        grid-template-columns: 0% 100%;
+    }
+</style>
+<body id="Body" class="oldGrid">
+    <div id="div1">
+        <div style="width: 1000px; border: 1px solid blue;">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae ad blanditiis, quasi iste vero asperiores amet assumenda sint, laborum, provident dolore numquam magnam quis magni dolor non error sit commodi. Porro vel fugiat officia ad temporibus earum, aliquam consequuntur, repellat et officiis voluptatum magnam. Rerum earum quidem libero soluta corporis repudiandae recusandae modi aliquid accusamus! Quo laudantium ad sunt modi voluptatem fuga harum fugiat delectus vel magnam nisi voluptatum quisquam deserunt officia, possimus excepturi ratione? Velit placeat blanditiis ratione officiis doloremque ullam provident nobis, dolorem illo similique libero vel nemo eos, neque cum et ducimus cupiditate maiores facere voluptates ab! Id obcaecati natus consectetur inventore error praesentium distinctio saepe, blanditiis voluptate. Placeat nobis commodi, doloribus quasi vel quibusdam ducimus ipsa vitae, laudantium doloremque sed excepturi, sunt voluptatibus? Voluptatibus est esse iusto laborum iste quis eum quam temporibus ab nisi praesentium aliquid fugit facilis tempore suscipit sunt tempora, molestias earum consequuntur odio. Omnis, ut hic? Odit, numquam sapiente. Mollitia aliquid aspernatur cumque placeat, cupiditate illum dolore id natus iusto! Reprehenderit harum, ratione adipisci doloribus quae iusto aliquid alias ea ad consequatur molestias autem voluptas repudiandae delectus sunt recusandae optio maxime distinctio natus quia commodi. Eaque modi id iure, nobis quo quis?</p>
+        </div>
+    </div>
+    <div id="div2"></div>
+    <script>
+        let body = document.querySelector('#Body');
+        body.addEventListener('click',()=>{
+            body.classList.toggle('newGrid');
+            console.log(this);
+        });
+    </script>
+</body>
+</html>

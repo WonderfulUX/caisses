@@ -40,19 +40,9 @@ h3{
     opacity: 0.5;
 }
 header{
-    #Info{
-        background-color: $light_grey;
-        padding: 10px 14px 10px 20px;
-        border-radius: $border_radius ;
-        #Date{
-            border-right: 1px solid rgba($color: #000000, $alpha: 0.1);
-        }
-    }
+    color: $light_grey;
+    background-color: $headerBG;
     #Network{
-        padding: 10px 15px ;
-        background-color: $network_grey;
-        border-radius: $border_radius ;
-        color: $light_grey;
         #LocalStatus::before,#InternetStatus::before{
             content: url(./ressources/NetworkStatus.svg);
             margin-right: 4px;
@@ -60,10 +50,17 @@ header{
     }
 
 }
+.defaultGrid{
+    grid-template-columns: 0% 99%;
+}
+.newGrid{
+    grid-template-columns: 69% 30%;
+}
 #Main{
-    height: 75vh;
+    height: 80vh;
     position: relative;
-    display: flex;
+    display: grid;
+    transition: display linear 0.3s;
     &>div{
         background-color: $light_grey;
         height: 100%;
@@ -72,7 +69,7 @@ header{
     }
     #displayProductsBtn{
         position: absolute;
-        top: -1rem;
+        top: -0.6rem;
         left: 0;
         color: $light_grey;
         background-color: $productBtn;
@@ -84,8 +81,7 @@ header{
         z-index: 20;
     }
     #Produits{
-        width: 0%;
-        opacity: 0;
+        width: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
         &::-webkit-scrollbar{
@@ -167,7 +163,7 @@ header{
         }
         tr{
             display: grid;
-            grid-template-columns: 20% 30% 10% 10% 15% 15%;
+            grid-template-columns: 20% 30% 10% 10% 15% 15% 40px;
         }
         tbody, thead{
             width: 98%;
@@ -181,14 +177,13 @@ header{
             background-color: white;
             box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            &::after{
-                content: url(./ressources/close.svg);
-                height: 20px;
-                width: 20px;
-                position: absolute;
-                top: 50%;
-                right : -20px;
-                transform: translateY(-50%);
+        }
+        tr button{
+            border: none;
+            background-color: transparent;
+            width: 40px;
+            img{
+                pointer-events: none;
             }
         }
         .producStock, .productQuantity, .productPrice, .productSubTotal{
