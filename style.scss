@@ -77,7 +77,7 @@ header{
         height: 80px;
         border: none;
         border-radius: 0 6px 6px 0;
-        box-shadow: $shadow;
+        box-shadow: $shadowProductButton;
         z-index: 20;
     }
     #Produits{
@@ -256,7 +256,7 @@ footer{
         width: $footer_button_width;
         height: $footer_button_height;
         border-radius: $border_radius ;
-        box-shadow: $shadow;
+        box-shadow: $shadowFooterButton;
     }
     #LogOut{
         background-color: $red_button;
