@@ -201,6 +201,18 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   width: 100%;
   margin-left: 10px;
   position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 40px 1fr auto;
+      grid-template-rows: 40px 1fr auto;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+#Main #Selection #tableContainer {
+  width: 100%;
+  height: calc(72vh - 130px);
+  overflow-y: auto;
 }
 
 #Main #Selection thead {
@@ -213,8 +225,12 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 #Main #Selection tr {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% 30% 10% 10% 15% 15% 40px;
-      grid-template-columns: 20% 30% 10% 10% 15% 15% 40px;
+  -ms-grid-columns: 15% 1fr 8% 8% 10% 10% auto;
+      grid-template-columns: 15% 1fr 8% 8% 10% 10% auto;
+}
+
+#Main #Selection .opZero {
+  opacity: 0;
 }
 
 #Main #Selection tbody, #Main #Selection thead {
@@ -255,7 +271,6 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Selection #Summary {
-  position: absolute;
   bottom: 20px;
   right: 1rem;
   text-transform: uppercase;
@@ -336,5 +351,14 @@ footer button {
 
 footer #LogOut {
   background-color: #e00000;
+}
+
+@media screen and (max-height: 700px) {
+  #Main {
+    height: 75vh;
+  }
+  #Main #Selection #tableContainer {
+    height: calc(65vh - 130px);
+  }
 }
 /*# sourceMappingURL=style.css.map */
