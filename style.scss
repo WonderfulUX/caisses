@@ -54,7 +54,7 @@ header{
     grid-template-columns: 0% 99%;
 }
 .newGrid{
-    grid-template-columns: 69% 30%;
+    grid-template-columns: 1fr minmax(280px,30%);
 }
 #Main{
     height: 80vh;
@@ -167,6 +167,8 @@ header{
         }
         tbody, thead{
             width: 98%;
+            text-transform: uppercase;
+            font-size: 13px;
         }
         tbody tr {
             position: relative;

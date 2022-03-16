@@ -68,8 +68,8 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 .newGrid {
-  -ms-grid-columns: 69% 30%;
-      grid-template-columns: 69% 30%;
+  -ms-grid-columns: 1fr minmax(280px, 30%);
+      grid-template-columns: 1fr minmax(280px, 30%);
 }
 
 #Main {
@@ -219,6 +219,8 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 
 #Main #Selection tbody, #Main #Selection thead {
   width: 98%;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 
 #Main #Selection tbody tr {
