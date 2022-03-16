@@ -361,4 +361,20 @@ footer #LogOut {
     height: calc(65vh - 130px);
   }
 }
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 13px;
+  }
+  footer img, #Main #displayProductsBtn img {
+    width: 24px;
+  }
+  footer button, #Main #displayProductsBtn {
+    width: 80px;
+    height: 70px;
+  }
+  #Main #SearchBlock {
+    width: 80%;
+  }
+}
 /*# sourceMappingURL=style.css.map */
