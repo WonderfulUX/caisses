@@ -25,7 +25,7 @@ productDisplayBtn.addEventListener('click', ()=>{
     }
     else{
         tableRows.forEach(row=>{
-            row.style.gridTemplateColumns= "15% 1fr 8% 8% 10% 10% auto";
+            row.style.gridTemplateColumns= "20% 1fr repeat(4,10%) auto";
         });
         cells.forEach(cell=>{
             cell.style.display= 'block';

@@ -60,12 +60,11 @@ header{
     height: 80vh;
     position: relative;
     display: grid;
-    transition: display linear 0.3s;
+    gap: 5px;
     &>div{
         background-color: $light_grey;
         height: 100%;
         border-radius: $border_radius;
-        // transition: width ease-in-out 0.2s;
     }
     #displayProductsBtn{
         position: absolute;
@@ -153,7 +152,6 @@ header{
     }
     #Selection{
         width: 100%;
-        margin-left: 10px;
         position: relative;
         display: grid;
         grid-template-rows: 40px 1fr auto;
@@ -171,7 +169,7 @@ header{
         }
         tr{
             display: grid;
-            grid-template-columns: 15% 1fr 8% 8% 10% 10% auto;
+            grid-template-columns: 20% 1fr repeat(4,10%) auto;
         }
         .opZero{
             opacity: 0;

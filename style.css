@@ -77,8 +77,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   position: relative;
   display: -ms-grid;
   display: grid;
-  -webkit-transition: display linear 0.3s;
-  transition: display linear 0.3s;
+  gap: 5px;
 }
 
 #Main > div {
@@ -199,7 +198,6 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 
 #Main #Selection {
   width: 100%;
-  margin-left: 10px;
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -225,8 +223,8 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 #Main #Selection tr {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 15% 1fr 8% 8% 10% 10% auto;
-      grid-template-columns: 15% 1fr 8% 8% 10% 10% auto;
+  -ms-grid-columns: 20% 1fr (10%)[4] auto;
+      grid-template-columns: 20% 1fr repeat(4, 10%) auto;
 }
 
 #Main #Selection .opZero {
