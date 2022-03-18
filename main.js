@@ -1,12 +1,9 @@
 let draggeableEle = document.querySelectorAll(".dragList");
 let cliquableCategories = Array.from(document.querySelectorAll('.category'));
 let cliquableSubCategories = Array.from(document.querySelectorAll('.subCategory'));
-let cliquableProducts = document.querySelectorAll('.itemList li');
 let productDisplayBtn = document.getElementById('displayProductsBtn');
-let selectionBlock = document.getElementById('Selection');
-let productBlock = document.querySelector('#Main');
+let mainBlocks = document.querySelector('#Main');
 let posX, xOffset, startingPoint, xScrollOffset ;
-let productBlockDiplay = false;
 let removeSelectionBtns = document.querySelectorAll('.removeSelection');
 let tableRows = document.querySelectorAll('#Selection tr');
 let categoryIndex, subCategoryIndex, sameSubCategoryList;
@@ -17,8 +14,8 @@ let subCategorySelected = Boolean(false) ;
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
 productDisplayBtn.addEventListener('click', ()=>{
-    productBlock.classList.toggle('newGrid');
-    if(productBlock.classList.contains('newGrid')){
+    mainBlocks.classList.toggle('newGrid');
+    if(mainBlocks.classList.contains('newGrid')){
 
         cells = document.querySelectorAll('.toHide');
         cells.forEach(cell=>{
@@ -70,7 +67,7 @@ function cancelbehaviour(){
 
 
 //--------------------------------------------------------
-//CATEGORY CLICK EVENT
+//CATEGORY DISPLAY CLICK EVENT
 cliquableCategories.forEach(category => {
     category.addEventListener('click', categoriesHandle);
 });
@@ -174,4 +171,13 @@ function showRelatedProducts(categoryButton){
     listToBeDisplayed.forEach(element => {
         element.style.display = 'flex';
     });
+}
+
+setInterval(updateDateAndTime,500);
+
+function updateDateAndTime(){
+    let todayDateAndTime = new Date();
+    document.getElementById('Date').innerText = todayDateAndTime.toLocaleDateString("fr-FR");
+    document.getElementById('Time').innerText = todayDateAndTime.toLocaleTimeString("fr-FR");
+    console.log('exe');
 }
