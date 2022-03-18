@@ -129,10 +129,13 @@ header{
             background-color: $productDetails;
             letter-spacing: 0.3px;
         }
-        #SubCategories li {
+        .subCategoryList{
+            display: flex;
+        }
+        .subCategoryList li {
             background-color: $subCategories;
         }
-        #ProductList{
+        .productList{
             flex-wrap: wrap;
             li{
                 color: $light_grey;
@@ -143,11 +146,26 @@ header{
             flex-grow: 1;
             padding-left: 3%;
         }
-        .selected, #SubCategories .selected{
+        .selected, .subCategoryList .selected{
             box-shadow: $selected;
             background-color: $selection;
             color: $light_grey;
             // font-weight: 500;
+        }
+        .product, .category, .subCategory{
+            text-align: center;
+            display: flex;
+        }
+        .product{
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .category, .subCategory{
+            align-items:center;
+            justify-content: center;
+        }
+        .subCategory, .product{
+            display: none;
         }
     }
     #Selection{

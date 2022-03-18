@@ -168,16 +168,22 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   letter-spacing: 0.3px;
 }
 
-#Main #Produits #SubCategories li {
+#Main #Produits .subCategoryList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#Main #Produits .subCategoryList li {
   background-color: #A5A5A5;
 }
 
-#Main #Produits #ProductList {
+#Main #Produits .productList {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
-#Main #Produits #ProductList li {
+#Main #Produits .productList li {
   color: #f6f6f6;
   height: 120px;
 }
@@ -189,11 +195,41 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   padding-left: 3%;
 }
 
-#Main #Produits .selected, #Main #Produits #SubCategories .selected {
+#Main #Produits .selected, #Main #Produits .subCategoryList .selected {
   -webkit-box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
           box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
   background-color: #f8b312;
   color: #f6f6f6;
+}
+
+#Main #Produits .product, #Main #Produits .category, #Main #Produits .subCategory {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#Main #Produits .product {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#Main #Produits .category, #Main #Produits .subCategory {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#Main #Produits .subCategory, #Main #Produits .product {
+  display: none;
 }
 
 #Main #Selection {

@@ -1,5 +1,6 @@
 let draggeableEle = document.querySelectorAll(".dragList");
-let cliquableCategories = document.querySelectorAll('.itemList li');
+let cliquableCategories = Array.from(document.querySelectorAll('.category'));
+let cliquableSubCategories = Array.from(document.querySelectorAll('.subCategory'));
 let cliquableProducts = document.querySelectorAll('.itemList li');
 let productDisplayBtn = document.getElementById('displayProductsBtn');
 let selectionBlock = document.getElementById('Selection');
@@ -8,9 +9,13 @@ let posX, xOffset, startingPoint, xScrollOffset ;
 let productBlockDiplay = false;
 let removeSelectionBtns = document.querySelectorAll('.removeSelection');
 let tableRows = document.querySelectorAll('#Selection tr');
+let categoryIndex, subCategoryIndex, sameSubCategoryList;
+let products = document.querySelectorAll('.product');
+let categorySelected = Boolean(false) ;
+let subCategorySelected = Boolean(false) ;
 
-
-//DISPLAY PRODUCTS
+//--------------------------------------------------------
+//DISPLAY AND HIDE PRODUCTS BLOCK
 productDisplayBtn.addEventListener('click', ()=>{
     productBlock.classList.toggle('newGrid');
     if(productBlock.classList.contains('newGrid')){
@@ -39,7 +44,7 @@ removeSelectionBtns.forEach(btn=>{
     });
 });
 
-
+//--------------------------------------------------------
 //CATEGORY SCROLL
 draggeableEle.forEach(element => {
     element.addEventListener('mousedown', getScrollStart);
@@ -63,20 +68,110 @@ function cancelbehaviour(){
     this.removeEventListener('mousemove',scrollLeftRight);
 }
 
-//SELECTION
+
+//--------------------------------------------------------
+//CATEGORY CLICK EVENT
 cliquableCategories.forEach(category => {
-    category.addEventListener('click', select);
+    category.addEventListener('click', categoriesHandle);
+});
+cliquableSubCategories.forEach(subCategory => {
+    subCategory.addEventListener('click', subCategoriesHandle);
 });
 
-function select(){
-    let list = this.parentElement.querySelectorAll('li');
-    if(this.classList.contains('selected')){
+//CATEGORIES
+function categoriesHandle(){
+    if((categorySelected) && (this.classList.contains('selected'))){
+        // console.log("CASE 3");
         this.classList.remove('selected');
+        hideAllSubCategories();
+        hideAllProducts();
+        categorySelected = Boolean(false);
+        subCategorySelected = Boolean(false);
     }
-    else{
-        list.forEach(li =>{
-            li.classList.remove('selected');
+    else if((categorySelected) && !(this.classList.contains('selected'))){
+        // console.log("CASE 2");
+        cliquableCategories.forEach(category=>{
+            category.classList.remove('selected');
         });
         this.classList.add('selected');
+        hideAllProducts();
+        resetAllSubCategories();
+        showRelatedSubCategories(this);
+        categorySelected = Boolean(true);
     }
+    else{
+        // console.log("CASE 1");
+        this.classList.add('selected');
+        resetAllSubCategories();
+        showRelatedSubCategories(this);
+        categorySelected = Boolean(true);
+    }
+}
+
+//SUBCATEGORIES
+function subCategoriesHandle(){
+    if((subCategorySelected) && (this.classList.contains('selected'))){
+         console.log("CASE 6");
+        this.classList.remove('selected');
+        hideAllProducts();
+        subCategorySelected = Boolean(false);
+    }
+    else if((subCategorySelected) && !(this.classList.contains('selected'))){
+        console.log("CASE 5");
+        cliquableSubCategories.forEach(subCategory=>{
+            subCategory.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        showRelatedProducts(this);
+        subCategorySelected = Boolean(true);
+    }
+    else{
+        console.log("CASE 4");
+        this.classList.add('selected');
+        showRelatedProducts(this);
+        subCategorySelected = Boolean(true);
+    }
+}
+
+function resetAllSubCategories(){
+    cliquableSubCategories.forEach(subCategory=>{
+        subCategory.classList.remove('selected');
+    });
+}
+
+// //HIDE SUBS AND PRODUCTS
+function hideAllSubCategories(){
+    cliquableSubCategories.forEach(subCategory =>{
+        subCategory.style.display = 'none';
+        // console.log(subCategory);
+    });
+}
+function hideAllProducts(){
+    products.forEach(product =>{
+        product.style.display = 'none';
+    });
+}
+// //SHOW SUBS AND PRODUCTS
+function showRelatedSubCategories(categoryButton){
+    categoryIndex = cliquableCategories.indexOf(categoryButton);
+    cliquableSubCategories.forEach(subCategory =>{
+        subCategory.style.display = 'none';
+    });
+    let toBeDisplayed = document.querySelectorAll(`#Cat${categoryIndex+1}Subs li`);
+    toBeDisplayed.forEach(element => {
+        // console.log(element);
+        element.style.display = 'flex';
+    });
+}
+function showRelatedProducts(categoryButton){
+    let parent = categoryButton.parentElement.id;
+    let list = Array.from(document.querySelectorAll(`#${parent} li`));
+    subCategoryIndex = list.indexOf(categoryButton);
+    products.forEach(product =>{
+        product.style.display = 'none';
+    });
+    let listToBeDisplayed = document.querySelectorAll(`#ProductListC${categoryIndex+1}S${subCategoryIndex+1} li`);
+    listToBeDisplayed.forEach(element => {
+        element.style.display = 'flex';
+    });
 }
