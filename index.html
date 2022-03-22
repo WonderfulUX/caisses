@@ -47,11 +47,13 @@
         <div id="Produits" class="p-3 pe-0 align-items-center">
             <h2 class="text-center mb-4">Produits / Prestations</h2>
             <div id="SearchBlock" class="d-flex mx-auto mb-4">
-                <input type="text" name="SearchInput" id="SearchInput" placeholder="Rechercher un produit" class="d-block">
+                <input type="text" name="SearchInput" id="SearchInput" placeholder="Rechercher un produit" class="d-flex mx-auto mb-4">
+            </div>
+            <!-- <div id="SearchBlock" class="d-flex mx-auto mb-4">
                 <button id="SearchButton" class=" d-block">
                     <img src="./ressources/Search.svg" alt="">
-                </button>
-            </div>
+                </button> -->
+            <!-- </div> -->
             <section class="w-100 dragList" id="CategoriesContainer">
                 <!-- <h3 class="w-100 text-left mb-1">Catégories</h3> -->
                 <ul id="CategoriesList" class="d-flex itemList">
@@ -134,37 +136,38 @@
                     </li>
                 </ul>
             </section>
-            <section class="w-100">
+            <section class="w-100" id="ProductList">
                 <!-- CATEGORY 1 SUB 1 PRODUCTS -->
+                <ul id="FilteredList" class="d-flex w-100 productList"></ul>
                 <ul id="ProductListC1S1" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/p1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Café serré</p>
-                            <p class="text-right">2,00 €</p>
+                            <p class="text-right pname">Café serré</p>
+                            <p class="text-right pprice">2,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/p2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Cappuchino</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Cappuchino</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/p3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Café allongé</p>
-                            <p class="text-right">3,00 €</p>
+                            <p class="text-right pname">Café allongé</p>
+                            <p class="text-right pprice">3,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/p4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Flat white</p>
-                            <p class="text-right">3,50 €</p>
+                            <p class="text-right pname">Flat white</p>
+                            <p class="text-right pprice">3,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/p5.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Café choco</p>
-                            <p class="text-right">3,80 €</p>
+                            <p class="text-right pname">Café choco</p>
+                            <p class="text-right pprice">3,80 €</p>
                         </div>
                     </li>
                 </ul>
@@ -172,44 +175,44 @@
                 <ul id="ProductListC1S2" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/the1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Thé Noir</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Thé Noir</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/the2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Rooibos</p>
-                            <p class="text-right">2,60 €</p>
+                            <p class="text-right pname">Rooibos</p>
+                            <p class="text-right pprice">2,60 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/the3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Tournesol</p>
-                            <p class="text-right">2,70 €</p>
+                            <p class="text-right pname">Tournesol</p>
+                            <p class="text-right pprice">2,70 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/the4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Gingembre</p>
-                            <p class="text-right">2,80 €</p>
+                            <p class="text-right pname">Gingembre</p>
+                            <p class="text-right pprice">2,80 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/the5.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Pin</p>
-                            <p class="text-right">2,90 €</p>
+                            <p class="text-right pname">Pin</p>
+                            <p class="text-right pprice">2,90 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/the6.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Lavande</p>
-                            <p class="text-right">3,00 €</p>
+                            <p class="text-right pname">Lavande</p>
+                            <p class="text-right pprice">3,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/the7.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Fruits rouges</p>
-                            <p class="text-right">3,10 €</p>
+                            <p class="text-right pname">Fruits rouges</p>
+                            <p class="text-right pprice">3,10 €</p>
                         </div>
                     </li>
                 </ul>
@@ -217,32 +220,32 @@
                 <ul id="ProductListC1S3" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Infus1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Romarin</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Romarin</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Infus2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Herbes</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Herbes</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Infus3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">fruits rouges</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">fruits rouges</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Infus4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">thym</p>
-                            <p class="text-right">3,00 €</p>
+                            <p class="text-right pname">thym</p>
+                            <p class="text-right pprice">3,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Infus5.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Fleur Jaunes</p>
-                            <p class="text-right">3,50 €</p>
+                            <p class="text-right pname">Fleur Jaunes</p>
+                            <p class="text-right pprice">3,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -250,14 +253,14 @@
                 <ul id="ProductListC2S1" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/eau1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">S pellegrino</p>
-                            <p class="text-right">4,50 €</p>
+                            <p class="text-right pname">S pellegrino</p>
+                            <p class="text-right pprice">4,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/eau2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Evian</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Evian</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -265,20 +268,20 @@
                 <ul id="ProductListC2S2" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Biere1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Corona</p>
-                            <p class="text-right">8,00 €</p>
+                            <p class="text-right pname">Corona</p>
+                            <p class="text-right pprice">8,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Biere2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Smirnoff</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">Smirnoff</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Biere3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Heineken</p>
-                            <p class="text-right">8,50 €</p>
+                            <p class="text-right pname">Heineken</p>
+                            <p class="text-right pprice">8,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -286,50 +289,50 @@
                 <ul id="ProductListC2S3" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/whisky1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Jack Daniels</p>
-                            <p class="text-right">40,00 €</p>
+                            <p class="text-right pname">Jack Daniels</p>
+                            <p class="text-right pprice">40,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/whisky2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Henessy</p>
-                            <p class="text-right">50,00 €</p>
+                            <p class="text-right pname">Henessy</p>
+                            <p class="text-right pprice">50,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/rhum1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Saint james</p>
-                            <p class="text-right">20,00 €</p>
+                            <p class="text-right pname">Saint james</p>
+                            <p class="text-right pprice">20,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/rhum2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">C morgan</p>
-                            <p class="text-right">25,00 €</p>
+                            <p class="text-right pname">C morgan</p>
+                            <p class="text-right pprice">25,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/rhum3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Black cane</p>
-                            <p class="text-right">25,50 €</p>
+                            <p class="text-right pname">Black cane</p>
+                            <p class="text-right pprice">25,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/vodka1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Eristoff</p>
-                            <p class="text-right">20,00 €</p>
+                            <p class="text-right pname">Eristoff</p>
+                            <p class="text-right pprice">20,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/vodka2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Ciroc</p>
-                            <p class="text-right">35,00 €</p>
+                            <p class="text-right pname">Ciroc</p>
+                            <p class="text-right pprice">35,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/vodka3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Grey goose</p>
-                            <p class="text-right">45,00 €</p>
+                            <p class="text-right pname">Grey goose</p>
+                            <p class="text-right pprice">45,00 €</p>
                         </div>
                     </li>
                 </ul>
@@ -337,32 +340,32 @@
                 <ul id="ProductListC2S4" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/jus1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Orange</p>
-                            <p class="text-right">1,50 €</p>
+                            <p class="text-right pname">Orange</p>
+                            <p class="text-right pprice">1,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/jus2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Pommes</p>
-                            <p class="text-right">1,50 €</p>
+                            <p class="text-right pname">Pommes</p>
+                            <p class="text-right pprice">1,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/soda1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Coca</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Coca</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Soda2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Sprite</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Sprite</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Soda3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Orangina</p>
-                            <p class="text-right">2,50 €</p>
+                            <p class="text-right pname">Orangina</p>
+                            <p class="text-right pprice">2,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -370,20 +373,20 @@
                 <ul id="ProductListC2S5" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/bubbleT_Rose.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Fraise</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">Fraise</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/BubbleT_Chocolat.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Chocolat</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">Chocolat</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/BubbleT_Avocat.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Avocat</p>
-                            <p class="text-right">7,50 €</p>
+                            <p class="text-right pname">Avocat</p>
+                            <p class="text-right pprice">7,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -391,26 +394,26 @@
                 <ul id="ProductListC3S1" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Baguette1.jpeg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Tradition</p>
-                            <p class="text-right">1,00 €</p>
+                            <p class="text-right pname">Tradition</p>
+                            <p class="text-right pprice">1,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Baguette2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Farine</p>
-                            <p class="text-right">1,50 €</p>
+                            <p class="text-right pname">Farine</p>
+                            <p class="text-right pprice">1,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Baguette3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Sesame</p>
-                            <p class="text-right">1,70 €</p>
+                            <p class="text-right pname">Sesame</p>
+                            <p class="text-right pprice">1,70 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Baguette4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Figues</p>
-                            <p class="text-right">1,80 €</p>
+                            <p class="text-right pname">Figues</p>
+                            <p class="text-right pprice">1,80 €</p>
                         </div>
                     </li>
                 </ul>
@@ -418,38 +421,38 @@
                 <ul id="ProductListC3S2" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Sandwich1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Club Saumon</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">Club Saumon</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Sandwich2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Rosbeef</p>
-                            <p class="text-right">5,50 €</p>
+                            <p class="text-right pname">Rosbeef</p>
+                            <p class="text-right pprice">5,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Sandwich3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Bacon</p>
-                            <p class="text-right">4,50 €</p>
+                            <p class="text-right pname">Bacon</p>
+                            <p class="text-right pprice">4,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Sandwich4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Jambon cru</p>
-                            <p class="text-right">5,00 €</p>
+                            <p class="text-right pname">Jambon cru</p>
+                            <p class="text-right pprice">5,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Sandwich5.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Thon</p>
-                            <p class="text-right">4,00 €</p>
+                            <p class="text-right pname">Thon</p>
+                            <p class="text-right pprice">4,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Sandwich6.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Poulet</p>
-                            <p class="text-right">4,50 €</p>
+                            <p class="text-right pname">Poulet</p>
+                            <p class="text-right pprice">4,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -457,20 +460,20 @@
                 <ul id="ProductListC3S3" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pate1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Crabes (×6)</p>
-                            <p class="text-right">7,50 €</p>
+                            <p class="text-right pname">Crabes (×6)</p>
+                            <p class="text-right pprice">7,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pate3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Viandes (×6)</p>
-                            <p class="text-right">5,50 €</p>
+                            <p class="text-right pname">Viandes (×6)</p>
+                            <p class="text-right pprice">5,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pate4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Morue (×6)</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">Morue (×6)</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -478,26 +481,26 @@
                 <ul id="ProductListC3S4" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Viennoiserie1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">croissant nat</p>
-                            <p class="text-right">0,80 €</p>
+                            <p class="text-right pname">croissant nat</p>
+                            <p class="text-right pprice">0,80 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Viennoiserie2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">croissant jf</p>
-                            <p class="text-right">1,30 €</p>
+                            <p class="text-right pname">croissant jf</p>
+                            <p class="text-right pprice">1,30 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Viennoiserie3.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">croissant AM</p>
-                            <p class="text-right">1,50 €</p>
+                            <p class="text-right pname">croissant AM</p>
+                            <p class="text-right pprice">1,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Viennoiserie4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">pains choco</p>
-                            <p class="text-right">1,00 €</p>
+                            <p class="text-right pname">pains choco</p>
+                            <p class="text-right pprice">1,00 €</p>
                         </div>
                     </li>
                 </ul>
@@ -505,26 +508,26 @@
                 <ul id="ProductListC3S5" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pizza1.jpeg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Margarita mini</p>
-                            <p class="text-right">3,00 €</p>
+                            <p class="text-right pname">Margarita mini</p>
+                            <p class="text-right pprice">3,00 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pizza2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Saumon mini</p>
-                            <p class="text-right">5,50 €</p>
+                            <p class="text-right pname">Saumon mini</p>
+                            <p class="text-right pprice">5,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pizza3.jpeg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">Chorizo mini</p>
-                            <p class="text-right">4,50 €</p>
+                            <p class="text-right pname">Chorizo mini</p>
+                            <p class="text-right pprice">4,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Pizza4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">végé mini</p>
-                            <p class="text-right">3,50 €</p>
+                            <p class="text-right pname">végé mini</p>
+                            <p class="text-right pprice">3,50 €</p>
                         </div>
                     </li>
                 </ul>
@@ -532,20 +535,20 @@
                 <ul id="ProductListC3S6" class="d-flex w-100 productList">
                     <li class="mb-3 product" style=" background-image: url(./ressources/Gateau1.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">foret noire</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">foret noire</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Gateau2.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">fraisier</p>
-                            <p class="text-right">6,50 €</p>
+                            <p class="text-right pname">fraisier</p>
+                            <p class="text-right pprice">6,50 €</p>
                         </div>
                     </li>
                     <li class="mb-3 product" style=" background-image: url(./ressources/Gateau4.jpg); background-size: cover; position: relative;">
                         <div class="productDetails d-flex flex-column pe-2 align-items-end" >
-                            <p class="text-right">macaron</p>
-                            <p class="text-right">7,50 €</p>
+                            <p class="text-right pname">macaron</p>
+                            <p class="text-right pprice">7,50 €</p>
                         </div>
                     </li>
                 </ul>

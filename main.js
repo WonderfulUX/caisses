@@ -10,6 +10,8 @@ let categoryIndex, subCategoryIndex, sameSubCategoryList;
 let products = document.querySelectorAll('.product');
 let categorySelected = Boolean(false) ;
 let subCategorySelected = Boolean(false) ;
+let SearchInput = document.getElementById('SearchInput');
+let filteredList = document.getElementById('FilteredList');
 
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
@@ -65,6 +67,73 @@ function cancelbehaviour(){
     this.removeEventListener('mousemove',scrollLeftRight);
 }
 
+//--------------------------------------------------------
+//SEARCH PRODUCT
+SearchInput.addEventListener('focusin',clearBlock);
+SearchInput.addEventListener('focusout',resetBlock);
+SearchInput.addEventListener('keyup',filterResults);
+
+function clearBlock(){
+    clearFilteredList();
+    hideAllCategories();
+    hideAllSubCategories();
+    hideAllProducts();
+    console.log(this);
+    this.style.backgroundColor = "#fff";
+}
+
+function clearFilteredList(){
+    filteredList.innerHTML = "";
+}
+
+function hideAllCategories(){
+    cliquableCategories.forEach(category=>{
+        category.style.display = "none";
+    });
+}
+function resetBlock(){
+    clearFilteredList();
+    hideAllProducts();
+    hideAllSubCategories();
+    cliquableCategories.forEach(category=>{
+        category.classList.remove('selected');
+        category.style.display = "flex";
+    });
+    this.style.backgroundColor = "#e4e4e4";
+}
+
+function filterResults(){
+    filteredList.innerHTML = "";
+    let productObjectsList = [];
+    let mainList = allProductsList(productObjectsList);
+    let newList = mainList.filter(obj =>{
+        obj[1] = (obj[1]).toLowerCase();
+        return obj[1].includes(this.value);
+    });
+    newList.forEach(element=>{
+        let newEle = document.createElement('li');
+        newEle.classList.add('mb-3','product');
+        newEle.style.backgroundImage = `url(./ressources/${element[0]})`;
+        newEle.style.backgroundSize = `cover`;
+        newEle.style.position = `relative`;
+        newEle.style.display = `flex`;
+        newEle.innerHTML = `<div class="productDetails d-flex flex-column pe-2 align-items-end" >
+        <p class="text-right pname">${element[1]}</p>
+        <p class="text-right pprice">${element[2]}</p>
+        </div>`
+        filteredList.appendChild(newEle);
+    });
+    document.getElementById('ProductList').appendChild(filteredList);
+    console.log(newList);
+}
+
+function allProductsList(list){
+    products.forEach(product=>{
+        // list.push({image : product.style.backgroundImage.slice(18,-2), pname : product.children[0].children[0].innerText, pprice : product.children[0].children[1].innerText});
+        list.push([product.style.backgroundImage.slice(18,-2),product.children[0].children[0].innerText,product.children[0].children[1].innerText]);
+    });
+    return (list);
+}
 
 //--------------------------------------------------------
 //CATEGORY DISPLAY CLICK EVENT
@@ -164,20 +233,22 @@ function showRelatedProducts(categoryButton){
     let parent = categoryButton.parentElement.id;
     let list = Array.from(document.querySelectorAll(`#${parent} li`));
     subCategoryIndex = list.indexOf(categoryButton);
+    console.log(categoryIndex);
+    console.log(subCategoryIndex);
     products.forEach(product =>{
         product.style.display = 'none';
     });
     let listToBeDisplayed = document.querySelectorAll(`#ProductListC${categoryIndex+1}S${subCategoryIndex+1} li`);
+    console.log(listToBeDisplayed);
     listToBeDisplayed.forEach(element => {
         element.style.display = 'flex';
     });
 }
 
-setInterval(updateDateAndTime,500);
+setInterval(updateDateAndTime,1);
 
 function updateDateAndTime(){
     let todayDateAndTime = new Date();
     document.getElementById('Date').innerText = todayDateAndTime.toLocaleDateString("fr-FR");
     document.getElementById('Time').innerText = todayDateAndTime.toLocaleTimeString("fr-FR");
-    console.log('exe');
 }

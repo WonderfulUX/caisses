@@ -144,7 +144,12 @@ header{
         }
         #SearchInput{
             flex-grow: 1;
-            padding-left: 3%;
+            padding-left: 40px;
+            height: 40px;
+            border: transparent;
+            box-shadow: inset 1px 1px 4px #bababa;
+            background-color: #e4e4e4;
+            border-radius: $border_radius;
         }
         .selected, .subCategoryList .selected{
             box-shadow: $selected;
@@ -260,19 +265,14 @@ header{
         }
     }
     #SearchBlock{
+        display: inline-block;
         width: 60%;
         position: relative;
-        input{
-            display: block;
-            border-radius: 6px 0 0 6px; 
-            border: 1px solid #c4c4c4;          
-        }
-        button{
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 0 6px 6px 0;
-            background-color: $blue_button;
+        &::before{
+            content: url(./ressources//Search2.svg);
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
 }

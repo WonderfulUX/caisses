@@ -192,7 +192,13 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding-left: 3%;
+  padding-left: 40px;
+  height: 40px;
+  border: transparent;
+  -webkit-box-shadow: inset 1px 1px 4px #bababa;
+          box-shadow: inset 1px 1px 4px #bababa;
+  background-color: #e4e4e4;
+  border-radius: 6px;
 }
 
 #Main #Produits .selected, #Main #Produits .subCategoryList .selected {
@@ -354,22 +360,16 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #SearchBlock {
+  display: inline-block;
   width: 60%;
   position: relative;
 }
 
-#Main #SearchBlock input {
-  display: block;
-  border-radius: 6px 0 0 6px;
-  border: 1px solid #c4c4c4;
-}
-
-#Main #SearchBlock button {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 0 6px 6px 0;
-  background-color: #007f90;
+#Main #SearchBlock::before {
+  content: url(./ressources//Search2.svg);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 footer button {
