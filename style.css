@@ -139,7 +139,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0 auto 30px;
+  margin: 0 auto 20px;
 }
 
 .modalContent img {
@@ -157,7 +157,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .modalQuantityButtons button {

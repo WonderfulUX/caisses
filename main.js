@@ -86,7 +86,7 @@ function cancelbehaviour(){
 //--------------------------------------------------------
 //SEARCH PRODUCT
 SearchInput.addEventListener('focusin',clearBlock);
-SearchInput.addEventListener('keyup',filterResults);
+SearchInput.addEventListener('input',filterResults);
 
 function clearBlock(){
     clearFilteredList();
