@@ -46,6 +46,7 @@ button:active,
 }
 .prices{
     position: relative;
+    padding-right: 10px;
 }
 .prices::after{
     position: absolute;
@@ -81,7 +82,7 @@ header{
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: -10;
+    z-index: 50;
     display: none;
 }
 #modalWindow{
@@ -262,7 +263,7 @@ header{
             height: 40px;
             border: transparent;
             box-shadow: inset 1px 1px 4px #bababa;
-            background-color: #e4e4e4;
+            background-color: #fff;
             border-radius: $border_radius;
         }
         .selected, .subCategoryList .selected{
@@ -386,10 +387,24 @@ header{
         width: 60%;
         position: relative;
         &::before{
-            content: url(./ressources//Search2.svg);
+            content: url(./ressources/Search2.svg);
             position: absolute;
             top: 0;
             left: 0;
+        }
+        .clearSearch{
+            position: absolute;
+            right: 0;
+            border: transparent;
+            background-color: transparent;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .clearSearch:active{
+            box-shadow: none;
         }
     }
 }

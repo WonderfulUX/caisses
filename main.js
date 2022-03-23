@@ -5,7 +5,6 @@ let productDisplayBtn = document.getElementById('displayProductsBtn');
 let mainBlocks = document.querySelector('#Main');
 let posX, xOffset, startingPoint, xScrollOffset ;
 let removeSelectionBtns = document.querySelectorAll('.removeSelection');
-let tableRows = document.querySelectorAll('#Selection tr');
 let categoryIndex, subCategoryIndex, sameSubCategoryList;
 let products = document.querySelectorAll('.product');
 let categorySelected = Boolean(false) ;
@@ -21,10 +20,14 @@ let modalProductName = document.getElementById('modalProductName');
 let modalProductPrice = document.getElementById('modalProductPrice');
 let modalContainer = document.getElementById('modalContainer');
 let modalCancel = document.querySelector('.cancel');
+let modalAdd = document.querySelector('.add');
+let totalValue = document.getElementById('TotalValue');
+let clearSearch = document.querySelector('.clearSearch');
 
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
 productDisplayBtn.addEventListener('click', ()=>{
+    let tableRows = document.querySelectorAll('#Selection tr');
     mainBlocks.classList.toggle('newGrid');
     if(mainBlocks.classList.contains('newGrid')){
 
@@ -51,6 +54,10 @@ removeSelectionBtns.forEach(btn=>{
         e.target.parentElement.parentElement.remove();
     });
 });
+function removeLine(e){
+    e.parentElement.parentElement.remove();
+    updateTotal();
+};
 
 //--------------------------------------------------------
 //CATEGORY SCROLL
@@ -79,7 +86,6 @@ function cancelbehaviour(){
 //--------------------------------------------------------
 //SEARCH PRODUCT
 SearchInput.addEventListener('focusin',clearBlock);
-SearchInput.addEventListener('focusout',resetBlock);
 SearchInput.addEventListener('keyup',filterResults);
 
 function clearBlock(){
@@ -87,8 +93,6 @@ function clearBlock(){
     hideAllCategories();
     hideAllSubCategories();
     hideAllProducts();
-    console.log(this);
-    this.style.backgroundColor = "#fff";
 }
 
 function clearFilteredList(){
@@ -101,17 +105,29 @@ function hideAllCategories(){
     });
 }
 function resetBlock(){
+    SearchInput.value ="";
+    clearSearch.classList.add('d-none');
     clearFilteredList();
     hideAllProducts();
     hideAllSubCategories();
     cliquableCategories.forEach(category=>{
+        console.log('displaying');
         category.classList.remove('selected');
         category.style.display = "flex";
     });
-    this.style.backgroundColor = "#e4e4e4";
 }
 
+
+
 function filterResults(){
+    console.log(this.value);
+    if(this.value!==""){
+        clearSearch.classList.remove('d-none');
+    }
+    else{
+        resetBlock();
+        return ;
+    }
     filteredList.innerHTML = "";
     let productObjectsList = [];
     let mainList = allProductsList(productObjectsList);
@@ -129,11 +145,12 @@ function filterResults(){
         newEle.innerHTML = `<div class="productDetails d-flex flex-column pe-2 align-items-end" >
         <p class="text-right pname">${element[1]}</p>
         <p class="text-right pprice">${element[2]}</p>
-        </div>`
+        </div>`;
+        newEle.addEventListener('click',openModal);
         filteredList.appendChild(newEle);
     });
     document.getElementById('ProductList').appendChild(filteredList);
-    console.log(newList);
+    // console.log(newList);
 }
 
 function allProductsList(list){
@@ -186,13 +203,13 @@ function categoriesHandle(){
 //SUBCATEGORIES
 function subCategoriesHandle(){
     if((subCategorySelected) && (this.classList.contains('selected'))){
-         console.log("CASE 6");
+        //  console.log("CASE 6");
         this.classList.remove('selected');
         hideAllProducts();
         subCategorySelected = Boolean(false);
     }
     else if((subCategorySelected) && !(this.classList.contains('selected'))){
-        console.log("CASE 5");
+        // console.log("CASE 5");
         cliquableSubCategories.forEach(subCategory=>{
             subCategory.classList.remove('selected');
         });
@@ -201,7 +218,7 @@ function subCategoriesHandle(){
         subCategorySelected = Boolean(true);
     }
     else{
-        console.log("CASE 4");
+        // console.log("CASE 4");
         this.classList.add('selected');
         showRelatedProducts(this);
         subCategorySelected = Boolean(true);
@@ -225,6 +242,7 @@ function hideAllProducts(){
     products.forEach(product =>{
         product.style.display = 'none';
     });
+    filteredList.innerHTML="";
 }
 // //SHOW SUBS AND PRODUCTS
 function showRelatedSubCategories(categoryButton){
@@ -242,15 +260,16 @@ function showRelatedProducts(categoryButton){
     let parent = categoryButton.parentElement.id;
     let list = Array.from(document.querySelectorAll(`#${parent} li`));
     subCategoryIndex = list.indexOf(categoryButton);
-    console.log(categoryIndex);
-    console.log(subCategoryIndex);
+    // console.log(categoryIndex);
+    // console.log(subCategoryIndex);
     products.forEach(product =>{
         product.style.display = 'none';
     });
     let listToBeDisplayed = document.querySelectorAll(`#ProductListC${categoryIndex+1}S${subCategoryIndex+1} li`);
-    console.log(listToBeDisplayed);
+    // console.log(listToBeDisplayed);
     listToBeDisplayed.forEach(element => {
         element.style.display = 'flex';
+        element.addEventListener('click',openModal);
     });
 }
 
@@ -271,19 +290,17 @@ products.forEach(product=>{
 })
 
 function openModal(){
-    modalContainer.style.zIndex = '50';
+    console.log("opening");
     modalContainer.style.display = 'flex';
     modalQuantity.innerText = 1;
-    console.log(this);
     updateModalData(this);
 }
 
 function updateModalData(ele){
-    console.log(ele.style.backgroundImage);
+    // console.log(ele.style.backgroundImage);
     modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
     modalProductName.innerText = ele.children[0].children[0].innerText;
     modalProductPrice.innerText = ele.children[0].children[1].innerText;
-    console.log('Prix1 ' + modalProductPrice.innerText );
     updateSubTotal();
 }
 
@@ -307,3 +324,47 @@ function updateSubTotal(){
 modalCancel.addEventListener('click',()=>{
     modalContainer.style.display = "none";
 });
+modalAdd.addEventListener('click',()=>{
+    let tableBody = document.querySelector('#tableContainer tbody');
+    let newTableLine = document.createElement('tr');
+    newTableLine.style.gridTemplateColumns = '50% 50%';
+    newTableLine.innerHTML = `<td class="productReference toHide">451235487</td>
+    <td class="productName">${modalProductName.innerText}</td>
+    <td class="productStock toHide">20</td>
+    <td class="productQuantity">${modalQuantity.innerText}</td>
+    <td class="productPrice toHide prices">${modalProductPrice.innerText}</td>
+    <td class="productSubTotal toHide prices">${modalSubTotal.innerText}</td>
+    <td class="toHide">
+        <button class="removeSelection" onclick="removeLine(this)">
+            <img src="./ressources/close.svg" alt="">
+        </button>
+    </td>`;
+    tableBody.appendChild(newTableLine);
+    cells = document.querySelectorAll('.toHide');
+        cells.forEach(cell=>{
+            cell.style.display= 'none';
+        });
+    modalContainer.style.display = "none";
+    updateTotal();
+    // updateTotal(modalSubTotal.innerText);
+});
+
+function updateTotal(){
+    let prices = document.querySelectorAll('tbody .productSubTotal');
+    prices = Array.from(prices).map(price=>{
+        let temp = price.innerText.replace(',', '.');
+        return temp;
+    });
+    // console.log(prices);
+    let total = prices.reduce((val1,val2)=>
+    parseFloat(parseFloat(val1)+parseFloat(val2)).toFixed(2),0);
+    totalValue.innerText = total;
+    totalValue.innerText = totalValue.innerText.replace('.',',');
+
+//     let tempTotal = totalValue.innerText.replace(',', '.');
+//     console.log(`TemptTotal = ${tempTotal}`);
+//     let tempNewAmount = value.replace(',', '.');
+//     console.log(`tempNewAmount = ${tempNewAmount}`);
+//     tempTotal = parseFloat(parseFloat(tempTotal)+parseFloat(tempNewAmount)).toFixed(2);
+//     totalValue.innerText = (tempTotal).replace('.', ',');
+}
