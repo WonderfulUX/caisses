@@ -12,6 +12,15 @@ let categorySelected = Boolean(false) ;
 let subCategorySelected = Boolean(false) ;
 let SearchInput = document.getElementById('SearchInput');
 let filteredList = document.getElementById('FilteredList');
+let minusBtn = document.getElementById('minusBtn');
+let plusBtn = document.getElementById('plusBtn');
+let modalQuantity = document.getElementById('Quantity');
+let modalSubTotal = document.getElementById('modalSubTotal');
+let modalProductImg = document.getElementById('modaleImg');
+let modalProductName = document.getElementById('modalProductName');
+let modalProductPrice = document.getElementById('modalProductPrice');
+let modalContainer = document.getElementById('modalContainer');
+let modalCancel = document.querySelector('.cancel');
 
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
@@ -252,3 +261,49 @@ function updateDateAndTime(){
     document.getElementById('Date').innerText = todayDateAndTime.toLocaleDateString("fr-FR");
     document.getElementById('Time').innerText = todayDateAndTime.toLocaleTimeString("fr-FR");
 }
+
+
+//--------------------------------------------------------
+//MODALE
+
+products.forEach(product=>{
+    product.addEventListener('click',openModal);
+})
+
+function openModal(){
+    modalContainer.style.zIndex = '50';
+    modalContainer.style.display = 'flex';
+    modalQuantity.innerText = 1;
+    console.log(this);
+    updateModalData(this);
+}
+
+function updateModalData(ele){
+    console.log(ele.style.backgroundImage);
+    modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
+    modalProductName.innerText = ele.children[0].children[0].innerText;
+    modalProductPrice.innerText = ele.children[0].children[1].innerText;
+    console.log('Prix1 ' + modalProductPrice.innerText );
+    updateSubTotal();
+}
+
+minusBtn.addEventListener('click',()=>{
+    if(parseInt(modalQuantity.innerText)>=2){
+        modalQuantity.innerText = parseInt(modalQuantity.innerText)-1;
+        updateSubTotal();
+    }
+})
+plusBtn.addEventListener('click',()=>{
+    modalQuantity.innerText = parseInt(modalQuantity.innerText)+1;
+    updateSubTotal();
+})
+
+function updateSubTotal(){
+    let tempModalProductPrice = modalProductPrice.innerText.replace(',','.');
+    modalSubTotal.innerText = parseFloat(modalQuantity.innerText*parseFloat(tempModalProductPrice).toFixed(2)).toFixed(2);
+    modalSubTotal.innerText = modalSubTotal.innerText.replace('.', ',');
+}
+
+modalCancel.addEventListener('click',()=>{
+    modalContainer.style.display = "none";
+});

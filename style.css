@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* RESET END*/
 body *, ::after, ::before {
   margin: 0;
@@ -52,6 +53,23 @@ h3 {
   opacity: 0.5;
 }
 
+button:active,
+#minusBtn:active,
+#plusBtn:active {
+  -webkit-box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.prices {
+  position: relative;
+}
+
+.prices::after {
+  position: absolute;
+  display: inline-block;
+  content: " €";
+}
+
 header {
   color: #f6f6f6;
   background-color: #242429;
@@ -70,6 +88,148 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 .newGrid {
   -ms-grid-columns: 1fr minmax(280px, 30%);
       grid-template-columns: 1fr minmax(280px, 30%);
+}
+
+#modalContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -10;
+  display: none;
+}
+
+#modalWindow {
+  width: 350px;
+  height: auto;
+  background-color: #F6F6F6;
+  padding: 20px 20px 30px;
+  border-radius: 6px;
+}
+
+.modalHeader {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.modalContent {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto 30px;
+}
+
+.modalContent img {
+  width: 200px;
+  height: 200px;
+}
+
+.modalQuantityButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+}
+
+.modalQuantityButtons button {
+  width: 45px;
+  height: 45px;
+  border: transparent;
+  background-color: #7e7d8c;
+  color: #f6f6f6;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 3px rgba(255, 255, 255, 0.55);
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 3px rgba(255, 255, 255, 0.55);
+}
+
+#Quantity {
+  font-size: 1.5rem;
+  width: 60px;
+  text-align: center;
+}
+
+#modalProductName, #modalProductPrice {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.subtotal {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: auto;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #940548;
+  font-weight: 600;
+}
+
+.modalValidateButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+}
+
+.modalValidateButtons .cancel, .modalValidateButtons .add {
+  text-transform: uppercase;
+  width: 150px;
+  height: 45px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: transparent;
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
+}
+
+.modalValidateButtons .cancel {
+  color: #940548;
+  background-color: #f6f6f6;
+  border: 1px solid #940548;
+}
+
+.modalValidateButtons .add {
+  background-color: #940548;
+  color: #f6f6f6;
 }
 
 #Main {
@@ -236,6 +396,10 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 
 #Main #Produits .subCategory, #Main #Produits .product {
   display: none;
+}
+
+#Main #Produits .pname, #Main #Produits .pprice {
+  pointer-events: none;
 }
 
 #Main #Selection {
