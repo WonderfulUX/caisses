@@ -120,6 +120,9 @@ function resetBlock(){
 
 
 function filterResults(){
+    if ("virtualKeyboard" in navigator) {
+        navigator.virtualKeyboard.overlaysContent = true
+    }
     console.log(this.value);
     if(this.value!==""){
         clearSearch.classList.remove('d-none');
