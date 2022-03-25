@@ -23,6 +23,7 @@ let modalCancel = document.querySelector('.cancel');
 let modalAdd = document.querySelector('.add');
 let totalValue = document.getElementById('TotalValue');
 let clearSearch = document.querySelector('.clearSearch');
+navigator.virtualKeyboard.overlaysContent = true;
 
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
@@ -86,12 +87,7 @@ function cancelbehaviour(){
 //--------------------------------------------------------
 //SEARCH PRODUCT
 SearchInput.addEventListener('focusin',clearBlock);
-SearchInput.addEventListener('input',()=>{
-    if ("virtualKeyboard" in navigator) {
-        navigator.virtualKeyboard.overlaysContent = true;
-    }
-    filterResults();
-});
+SearchInput.addEventListener('input',filterResults);
 
 function clearBlock(){
     clearFilteredList();
