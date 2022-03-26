@@ -23,7 +23,6 @@ let modalCancel = document.querySelector('.cancel');
 let modalAdd = document.querySelector('.add');
 let totalValue = document.getElementById('TotalValue');
 let clearSearch = document.querySelector('.clearSearch');
-navigator.virtualKeyboard.overlaysContent = true;
 
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
@@ -290,18 +289,38 @@ products.forEach(product=>{
     product.addEventListener('click',openModal);
 })
 
-function openModal(){
-    console.log("opening");
+function openModal(e){
+    if(e.target.classList.contains('removeSelection')){
+        return;
+    }
     modalContainer.style.display = 'flex';
     modalQuantity.innerText = 1;
+    console.log(`This ${this}`);
     updateModalData(this);
 }
 
 function updateModalData(ele){
-    // console.log(ele.style.backgroundImage);
-    modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
-    modalProductName.innerText = ele.children[0].children[0].innerText;
-    modalProductPrice.innerText = ele.children[0].children[1].innerText;
+    if(ele.classList.contains('product')){
+        modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
+        modalProductName.innerText = ele.children[0].children[0].innerText;
+        modalProductPrice.innerText = ele.children[0].children[1].innerText;
+    }
+    else{
+        console.log(ele.children[1].innerText);
+        console.log(ele.children[4].innerText);
+        let eleToFind = Array.from(document.querySelectorAll('.pname')).filter(name=>{
+            if(name.innerText === ele.children[1].innerText){
+                console.log(name);
+                return name;
+            }
+        });
+        console.log(eleToFind);
+        // console.log(eleToFind[0].parentElement.parentElement.style.backgroundImage.slice(18,-2));
+        modalProductImg.src = 'ressources/'+eleToFind[0].parentElement.parentElement.style.backgroundImage.slice(18,-2);
+        modalProductName.innerText = ele.children[1].innerText;
+        modalQuantity.innerText = ele.children[3].innerText;
+        modalProductPrice.innerText = ele.children[4].innerText;
+    }
     updateSubTotal();
 }
 
@@ -326,46 +345,61 @@ modalCancel.addEventListener('click',()=>{
     modalContainer.style.display = "none";
 });
 modalAdd.addEventListener('click',()=>{
-    let tableBody = document.querySelector('#tableContainer tbody');
-    let newTableLine = document.createElement('tr');
-    newTableLine.style.gridTemplateColumns = '50% 50%';
-    newTableLine.innerHTML = `<td class="productReference toHide">451235487</td>
-    <td class="productName">${modalProductName.innerText}</td>
-    <td class="productStock toHide">20</td>
-    <td class="productQuantity">${modalQuantity.innerText}</td>
-    <td class="productPrice toHide prices">${modalProductPrice.innerText}</td>
-    <td class="productSubTotal toHide prices">${modalSubTotal.innerText}</td>
-    <td class="toHide">
-        <button class="removeSelection" onclick="removeLine(this)">
-            <img src="./ressources/close.svg" alt="">
-        </button>
-    </td>`;
-    tableBody.appendChild(newTableLine);
-    cells = document.querySelectorAll('.toHide');
-        cells.forEach(cell=>{
-            cell.style.display= 'none';
-        });
-    modalContainer.style.display = "none";
+    let selectionList = Array.from(document.querySelectorAll('.selectionLine .productName'));
+    let line = selectionList.filter(tableLine =>{
+        if(tableLine.innerText === modalProductName.innerText)
+        return tableLine;
+    });
+    if(line.length !==0){
+        line[0].parentElement.children[3].innerText = modalQuantity.innerText;
+        line[0].parentElement.children[5].innerText = modalSubTotal.innerText;
+        modalContainer.style.display = "none";
+    }
+    else{
+        console.log('not dehyet');
+        let tableBody = document.querySelector('#tableContainer tbody');
+        let newTableLine = document.createElement('tr');
+        newTableLine.classList.add('selectionLine');
+        newTableLine.style.gridTemplateColumns = '50% 50%';
+        newTableLine.innerHTML = `<td class="productReference toHide">451235487</td>
+        <td class="productName">${modalProductName.innerText}</td>
+        <td class="productStock toHide">20</td>
+        <td class="productQuantity">${modalQuantity.innerText}</td>
+        <td class="productPrice toHide prices">${modalProductPrice.innerText}</td>
+        <td class="productSubTotal toHide prices">${modalSubTotal.innerText}</td>
+        <td class="toHide">
+            <button class="removeSelection" onclick="removeLine(this)">
+                <img src="./ressources/close.svg" alt="">
+            </button>
+        </td>`;
+        newTableLine.addEventListener('click',openModal);
+        tableBody.appendChild(newTableLine);
+        cells = document.querySelectorAll('.toHide');
+            cells.forEach(cell=>{
+                cell.style.display= 'none';
+            });
+        modalContainer.style.display = "none";
+    }
     updateTotal();
-    // updateTotal(modalSubTotal.innerText);
 });
 
 function updateTotal(){
     let prices = document.querySelectorAll('tbody .productSubTotal');
-    prices = Array.from(prices).map(price=>{
-        let temp = price.innerText.replace(',', '.');
-        return temp;
-    });
-    // console.log(prices);
-    let total = prices.reduce((val1,val2)=>
-    parseFloat(parseFloat(val1)+parseFloat(val2)).toFixed(2),0);
-    totalValue.innerText = total;
-    totalValue.innerText = totalValue.innerText.replace('.',',');
-
-//     let tempTotal = totalValue.innerText.replace(',', '.');
-//     console.log(`TemptTotal = ${tempTotal}`);
-//     let tempNewAmount = value.replace(',', '.');
-//     console.log(`tempNewAmount = ${tempNewAmount}`);
-//     tempTotal = parseFloat(parseFloat(tempTotal)+parseFloat(tempNewAmount)).toFixed(2);
-//     totalValue.innerText = (tempTotal).replace('.', ',');
+    console.log(prices.length);
+    if(prices.length===0){
+        totalValue.innerText = '0,00';
+        console.log('IF');
+    }
+    else{ 
+        console.log('ELSE');
+        prices = Array.from(prices).map(price=>{
+            let temp = price.innerText.replace(',', '.');
+            return temp;
+        });
+        // console.log(prices);
+        let total = prices.reduce((val1,val2)=>
+        parseFloat(parseFloat(val1)+parseFloat(val2)).toFixed(2),0);
+        totalValue.innerText = total;
+        totalValue.innerText = totalValue.innerText.replace('.',',');
+    }
 }
