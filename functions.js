@@ -37,12 +37,8 @@ function hideAllCategories(){
         category.style.display = "none";
     });
 }
-function resetBlock(){
-    SearchInput.value ="";
-    clearSearch.classList.add('d-none');
-    clearFilteredList();
-    hideAllProducts();
-    hideAllSubCategories();
+
+function showCategories(){
     cliquableCategories.forEach(category=>{
         // console.log('displaying');
         category.classList.remove('selected');
@@ -50,37 +46,48 @@ function resetBlock(){
     });
 }
 
+function resetBlock(){
+    SearchInput.value ="";
+    clearSearch.classList.add('d-none');
+    clearFilteredList();
+    hideAllProducts();
+    hideAllSubCategories();
+    showCategories();
+}
+
 function filterResults(){
     // console.log(this.value);
-    if(this.value!==""){
-        clearSearch.classList.remove('d-none');
+    if(this.value===""){
+        clearSearch.classList.add('d-none');
+        showCategories();
+        hideAllProducts();
     }
     else{
-        resetBlock();
-        return ;
+        clearSearch.classList.remove('d-none');
+        clearBlock();
+        filteredList.innerHTML = "";
+        let productObjectsList = [];
+        let mainList = allProductsList(productObjectsList);
+        let newList = mainList.filter(obj =>{
+            obj[1] = (obj[1]).toLowerCase();
+            return obj[1].includes(this.value);
+        });
+        newList.forEach(element=>{
+            let newEle = document.createElement('li');
+            newEle.classList.add('mb-3','product');
+            newEle.style.backgroundImage = `url(./ressources/${element[0]})`;
+            newEle.style.backgroundSize = `cover`;
+            newEle.style.position = `relative`;
+            newEle.style.display = `flex`;
+            newEle.innerHTML = `<div class="productDetails d-flex flex-column pe-2 align-items-end" >
+            <p class="text-right pname">${element[1]}</p>
+            <p class="text-right pprice">${element[2]}</p>
+            </div>`;
+            newEle.addEventListener('click',openModal);
+            filteredList.appendChild(newEle);
+        });
+        document.getElementById('ProductList').appendChild(filteredList);
     }
-    filteredList.innerHTML = "";
-    let productObjectsList = [];
-    let mainList = allProductsList(productObjectsList);
-    let newList = mainList.filter(obj =>{
-        obj[1] = (obj[1]).toLowerCase();
-        return obj[1].includes(this.value);
-    });
-    newList.forEach(element=>{
-        let newEle = document.createElement('li');
-        newEle.classList.add('mb-3','product');
-        newEle.style.backgroundImage = `url(./ressources/${element[0]})`;
-        newEle.style.backgroundSize = `cover`;
-        newEle.style.position = `relative`;
-        newEle.style.display = `flex`;
-        newEle.innerHTML = `<div class="productDetails d-flex flex-column pe-2 align-items-end" >
-        <p class="text-right pname">${element[1]}</p>
-        <p class="text-right pprice">${element[2]}</p>
-        </div>`;
-        newEle.addEventListener('click',openModal);
-        filteredList.appendChild(newEle);
-    });
-    document.getElementById('ProductList').appendChild(filteredList);
     // console.log(newList);
 }
 

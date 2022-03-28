@@ -35,10 +35,10 @@ let alreadySelected = Boolean(false) ;
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
 productDisplayBtn.addEventListener('click', ()=>{
+    (filteredList.innerHTML!=='')?clearSearch.classList.remove('d-none'):'';
     let tableRows = document.querySelectorAll('#Selection tr');
     mainBlocks.classList.toggle('newGrid');
     if(mainBlocks.classList.contains('newGrid')){
-
         cells = document.querySelectorAll('.toHide');
         cells.forEach(cell=>{
             cell.style.display= 'none';
@@ -49,6 +49,7 @@ productDisplayBtn.addEventListener('click', ()=>{
         productDisplayBtn.style.backgroundColor = "#b30068";
     }
     else{
+        (filteredList.innerHTML!=='')?clearSearch.classList.add('d-none'):'';
         tableRows.forEach(row=>{
             row.style.gridTemplateColumns= "20% 1fr repeat(4,10%) auto";
         });
@@ -72,7 +73,7 @@ draggeableEle.forEach(element => {
 
 //--------------------------------------------------------
 //SEARCH PRODUCT
-SearchInput.addEventListener('focus',clearBlock);
+// SearchInput.addEventListener('focusin',clearBlock);
 SearchInput.addEventListener('input',filterResults);
 
 //--------------------------------------------------------
