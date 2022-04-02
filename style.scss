@@ -29,6 +29,99 @@ body{
     color: $text;
     font-family: 'Mulish', sans-serif;
 }
+#ScreenLock{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background-color: $background;
+    color: $light_grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    #LogoKomesWhite{
+        width: 280px;
+    }
+    .date, .time{
+        font-size: 1.5rem;
+    }
+    #lockInput{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 50px;
+        background-color: $network_grey;
+        color: $light_grey;
+        border-radius: 2px;
+    }
+    #screenLockErrorMessage{
+        display: none;
+        color: hsl(0, 100%, 85%);
+        margin-bottom: 20px;
+        padding: 0 5px;
+        text-align: center;
+    }
+    img, .time{
+        margin-bottom: 30px;
+    }
+    #LockScreenImg{
+        width: 30px;
+        margin-bottom: 12px;
+    }
+    label{
+        margin-bottom: 12px;
+    }
+    input{
+        text-align: center;
+        width: 100px;
+        height: 45px;
+    }
+    .lockInputFieldBasics{
+        background-color: #fff;
+        border: transparent;
+        box-shadow: inset 3px 3px 3px #C4C4C4;
+        margin-bottom: 30px;
+    }
+    .lockInputFieldError{
+        box-shadow: none;
+        margin-bottom: 10px;
+        background-color: hsl(0, 100%, 90%);
+        border: 2px solid red;
+    }
+    button{
+        width: 150px;
+        height: 50px;
+        background-color: $productBtn;
+        // border-radius: $border_radius;
+        color: $light_grey;
+        border: transparent;
+        box-shadow: $shadow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+    .active{
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: all;
+    }
+    .active:active{
+        box-shadow: $selected;
+    }
+
+    button img{
+        margin-bottom: 0;
+        width: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+}
 h2, h3{
     font-size: 14px;
     text-transform: uppercase;
@@ -39,9 +132,14 @@ h2, h3{
 h3{
     opacity: 0.5;
 }
-button:active,
+button:not(.removeSelection):active,
 #minusBtn:active,
-#plusBtn:active{
+#plusBtn:active,
+#Main #Produits .category:active,
+#Main #Produits .subCategoryList li:active,
+#Main #Produits .product:active,
+#Main #Selection #PaymentButton:active,
+#Main #Selection tbody tr:active{
     box-shadow: $selected ;
 }
 .prices{

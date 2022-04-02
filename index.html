@@ -44,13 +44,25 @@
             </div>
         </div>
     </div>
+        <!--------- SCREEN LOCK ----------->
+        <div id="ScreenLock">
+            <img src="./ressources/KomesLogoBlanc.svg" id="LogoKomesWhite" alt="">
+            <span class="date">--</span>
+            <span class="time">--</span>
+            <form id="lockInput">
+                <label for="lockInputField">Saisissez votre PIN pour dévérouiller la caisse</label>
+                <input type="password" id="lockInputField"  maxlength="4" class="lockInputFieldBasics" onclick="resetInputField()" onkeyup="activateButton()">
+                <span id="screenLockErrorMessage">PIN erroné, veuillez recommencer</span>
+                <button id="UnlockScreenBtn" type="submit" onclick="unlockScreen();"><span>Déverrouiller</span><img src="./ressources/lock.svg" alt=""></button>
+            </form>
+        </div>
     <!--------- HEADER----------->
     <header class="row justify-content-between w-100 align-items-center">
         <!--LEFT-->
         <div id="Info" class="d-flex w-auto" >
             <span id="vendor-name" class="d-inline-block me-4 w-auto fw-bold">Boris Boulogne</span>
-            <span id="Date" class="d-inline-block mx-1 pe-2">--</span>
-            <span id="Time" class="d-inline-block mx-1">--</span>
+            <span class="d-inline-block mx-1 pe-2 date">--</span>
+            <span class="d-inline-block mx-1 time">--</span>
         </div>
         <!--RIGHT-->
         <div id="Network" class="d-flex w-auto">
@@ -618,7 +630,7 @@
     <footer class="row justify-content-between w-100 p-1">
         <!--LEFT-->
         <div id="PrimaryActions" class=" d-flex w-auto px-0">
-            <button id="LockScreen" class="d-flex flex-column align-items-center justify-content-center me-1">
+            <button id="LockScreen" onclick="lockScreen()" class="d-flex flex-column align-items-center justify-content-center me-1">
                 <img src="./ressources/VerrouilageEcran.svg" alt="">
                 <span>Verrouillage</span>
             </button>

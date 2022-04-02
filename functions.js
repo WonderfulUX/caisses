@@ -203,7 +203,7 @@ function showRelatedProducts(categoryButton){
 //--------------------------------------------------------
 //MODALE
 function openModal(e){
-    console.log("Opening");
+    // console.log("Opening");
     if(e.target.classList.contains('removeSelection')){
         return;
     }
@@ -212,8 +212,8 @@ function openModal(e){
 }
 
 function checkQuantity(){
-    console.log('**********************');
-    console.log('Checking quantity from selection list');
+    // console.log('**********************');
+    // console.log('Checking quantity from selection list');
     let selectionList = Array.from(document.querySelectorAll('.selectionLine .productName'));
     let dataCell = selectionList.filter(select =>{
         if(select.innerText===modalProductName.innerText){
@@ -222,33 +222,31 @@ function checkQuantity(){
     });
     if(dataCell.length >0){
         modalQuantity.innerText = dataCell[0].parentElement.children[3].innerText;
-        console.log(`Already selected`);
+        // console.log(`Already selected`);
         alreadySelected = Boolean(true);
     }
     else{
-        console.log('Selection List empty');
-        console.log(`New quantity : 1`);
+        // console.log('Selection List empty');
+        // console.log(`New quantity : 1`);
         alreadySelected = Boolean(false);
-        console.log('ELSE 2');
+        // console.log('ELSE 2');
         modalQuantity.innerText = 1;
     }
 }
 
 function updateModalData(ele){
-    console.log('updating Modal Data');
+    // console.log('updating Modal Data');
     if(ele.classList.contains('product')){
-        console.log('Click on product');
+        // console.log('Click on product');
         modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
         modalProductName.innerText = ele.children[0].children[0].innerText;
         modalProductPrice.innerText = ele.children[0].children[1].innerText;
         checkQuantity();
-        console.log(` -- New quantity : ${modalQuantity.innerText}`);
     }
     else{
-        console.log(ele);
-        console.log('already Selected bool true');
+        // console.log(ele);
+        // console.log('already Selected bool true');
         alreadySelected = Boolean(true);
-        console.log(document.querySelectorAll('.pname'));
         let eleToFind = Array.from(document.querySelectorAll('.pname')).filter(name=>{
             // console.log(name);
             if(name.innerText.toUpperCase() === ele.children[1].innerText){
@@ -257,7 +255,6 @@ function updateModalData(ele){
                 return name;
             }
         });
-        console.log(ele.children[1].innerText);
         modalProductImg.src = 'ressources/'+eleToFind[0].parentElement.parentElement.style.backgroundImage.slice(18,-2);
         modalProductName.innerText = ele.children[1].innerText;
         modalQuantity.innerText = ele.children[3].innerText;
@@ -266,7 +263,7 @@ function updateModalData(ele){
     updateSubTotal();
 }
 function updateSubTotal(){
-    console.log("Updating modal Subtotal");
+    // console.log("Updating modal Subtotal");
     let tempModalProductPrice = modalProductPrice.innerText.replace(',','.');
     modalSubTotal.innerText = parseFloat(modalQuantity.innerText*parseFloat(tempModalProductPrice).toFixed(2)).toFixed(2);
     modalSubTotal.innerText = modalSubTotal.innerText.replace('.', ',');
@@ -276,20 +273,18 @@ function updateSubTotal(){
 //SELECTIONS
 
 function updateSelectionLine(){
-    console.log("Updating selection Line");
+    // console.log("Updating selection Line");
     let lineToUpdate = Array.from(document.querySelectorAll('.selectionLine .productName'));
-    console.log(lineToUpdate);
     lineToUpdate = lineToUpdate.filter(line=>{
         if(line.innerText === modalProductName.innerText){
             return line;
         }
     });
-    console.log(lineToUpdate);
     lineToUpdate[0].parentElement.children[3].innerText = modalQuantity.innerText;
     lineToUpdate[0].parentElement.children[5].innerText = modalSubTotal.innerText;
 }
 function addNewLine(){
-    console.log("Adding new selection Line");
+    // console.log("Adding new selection Line");
     let tableBody = document.querySelector('#tableContainer tbody');
     let newTableLine = document.createElement('tr');
     newTableLine.classList.add('selectionLine');
@@ -314,15 +309,15 @@ function addNewLine(){
 }
 
 function removeLine(e){
-    console.log("Removing line");
+    // console.log("Removing line");
     e.parentElement.parentElement.remove();
     updateTotal();
 };
 
 function updateTotal(){
-    console.log("Updating total");
+    // console.log("Updating total");
     let prices = document.querySelectorAll('tbody .productSubTotal');
-    console.log(prices.length);
+    // console.log(prices.length);
     if(prices.length===0){
         totalValue.innerText = '0,00';
         // console.log('IF');
@@ -345,6 +340,46 @@ function updateTotal(){
 //TIME AND DATE
 function updateDateAndTime(){
     let todayDateAndTime = new Date();
-    document.getElementById('Date').innerText = todayDateAndTime.toLocaleDateString("fr-FR");
-    document.getElementById('Time').innerText = todayDateAndTime.toLocaleTimeString("fr-FR");
+    let dateElements = document.querySelectorAll('.date');
+    let timeElements = document.querySelectorAll('.time');
+    dateElements.forEach(date=>{
+        date.innerText = todayDateAndTime.toLocaleDateString("fr-FR");
+    })
+    timeElements.forEach(time=>{
+        time.innerText = todayDateAndTime.toLocaleTimeString("fr-FR");
+    })
+}
+
+//--------------------------------------------------------
+//SCREEN LOCK
+function lockScreen(){
+    ScreenLockInterface.style.display = 'flex';
+}
+
+function unlockScreen(e){
+    if(lockInputField.value == '1235'){
+        ScreenLockInterface.style.display = 'none';
+    }
+    else{
+        screenLockErrorMessage.style.display = 'inline-block';
+        lockInputField.classList.add('lockInputFieldError');
+
+    }
+}
+function resetInputField(){
+    lockInputField.classList.remove('lockInputFieldError');
+    screenLockErrorMessage.style.display = 'none';
+    lockInputField.value = '';
+    UnlockScreenBtn.classList.remove('active');
+    // UnlockScreenBtn.setAttribute('disabled', true);
+}
+function activateButton(){
+    if(lockInputField.value.length === 4){
+        UnlockScreenBtn.classList.add('active');
+        // UnlockScreenBtn.setAttribute('disabled', false);
+    }
+    else{
+        UnlockScreenBtn.classList.remove('active');
+        // UnlockScreenBtn.setAttribute('disabled', true);
+    }
 }

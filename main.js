@@ -31,7 +31,11 @@ let modalAdd = document.querySelector('.add');
 let totalValue = document.getElementById('TotalValue');
 //Selection
 let alreadySelected = Boolean(false) ;
-
+//ScreenLock
+let ScreenLockInterface = document.getElementById('ScreenLock');
+let lockInputField = document.getElementById('lockInputField');
+let UnlockScreenBtn = document.getElementById('UnlockScreenBtn');
+let lockInputForm = document.getElementById('lockInput');
 //--------------------------------------------------------
 //DISPLAY AND HIDE PRODUCTS BLOCK
 productDisplayBtn.addEventListener('click', ()=>{
@@ -121,3 +125,7 @@ modalAdd.addEventListener('click',()=>{
     }
     updateTotal();
 });
+
+lockInputForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+  });
