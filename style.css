@@ -115,6 +115,9 @@ body {
   text-align: center;
   width: 100px;
   height: 45px;
+  position: relative;
+  -webkit-transition: left 0.2s;
+  transition: left 0.2s;
 }
 
 #ScreenLock .lockInputFieldBasics {
@@ -131,6 +134,47 @@ body {
   margin-bottom: 10px;
   background-color: #ffcccc;
   border: 2px solid red;
+}
+
+#ScreenLock .lockInputFieldErrorAnimate {
+  -webkit-animation: shake 0.3s linear;
+          animation: shake 0.3s linear;
+}
+
+@-webkit-keyframes shake {
+  20% {
+    left: 20px;
+  }
+  40% {
+    left: -20px;
+  }
+  60% {
+    left: 5px;
+  }
+  80% {
+    left: -5px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+@keyframes shake {
+  20% {
+    left: 20px;
+  }
+  40% {
+    left: -20px;
+  }
+  60% {
+    left: 5px;
+  }
+  80% {
+    left: -5px;
+  }
+  100% {
+    left: 0px;
+  }
 }
 
 #ScreenLock button {

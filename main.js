@@ -32,6 +32,7 @@ let totalValue = document.getElementById('TotalValue');
 //Selection
 let alreadySelected = Boolean(false) ;
 //ScreenLock
+let pwdIsWrong = Boolean(false);
 let ScreenLockInterface = document.getElementById('ScreenLock');
 let lockInputField = document.getElementById('lockInputField');
 let UnlockScreenBtn = document.getElementById('UnlockScreenBtn');

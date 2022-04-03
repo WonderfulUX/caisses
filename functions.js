@@ -296,7 +296,7 @@ function addNewLine(){
     <td class="productPrice toHide prices">${modalProductPrice.innerText}</td>
     <td class="productSubTotal toHide prices">${modalSubTotal.innerText}</td>
     <td class="toHide">
-        <button class="removeSelection" onclick="removeLine(this)">
+        <button class="removeSelection" onclick="removeLine(event)">
             <img src="./ressources/close.svg" alt="">
         </button>
     </td>`;
@@ -309,8 +309,8 @@ function addNewLine(){
 }
 
 function removeLine(e){
-    // console.log("Removing line");
-    e.parentElement.parentElement.remove();
+    e.stopPropagation();
+    e.target.parentElement.parentElement.remove();
     updateTotal();
 };
 
@@ -353,18 +353,28 @@ function updateDateAndTime(){
 //--------------------------------------------------------
 //SCREEN LOCK
 function lockScreen(){
+    lockInputField.value = '';
     ScreenLockInterface.style.display = 'flex';
 }
 
 function unlockScreen(e){
-    if(lockInputField.value == '1235'){
-        ScreenLockInterface.style.display = 'none';
+    if(pwdIsWrong){
+        screenLockErrorMessage.style.display = 'none';
+        lockInputField.classList.remove('lockInputFieldErrorAnimate');
     }
-    else{
-        screenLockErrorMessage.style.display = 'inline-block';
-        lockInputField.classList.add('lockInputFieldError');
-
-    }
+    setTimeout(()=>{
+        if(lockInputField.value == '1235'){
+            ScreenLockInterface.style.display = 'none';
+        }
+        else{
+            console.log('Wrong PIN');
+            screenLockErrorMessage.style.display = 'inline-block';
+            lockInputField.classList.add('lockInputFieldError');
+            lockInputField.classList.add('lockInputFieldErrorAnimate');
+            pwdIsWrong = Boolean(true);
+    
+        }
+    },1);
 }
 function resetInputField(){
     lockInputField.classList.remove('lockInputFieldError');
@@ -380,6 +390,10 @@ function activateButton(){
     }
     else{
         UnlockScreenBtn.classList.remove('active');
+        if(lockInputField.classList.contains('lockInputFieldError')){
+            lockInputField.classList.remove('lockInputFieldError');
+            screenLockErrorMessage.style.display = 'none';
+        }
         // UnlockScreenBtn.setAttribute('disabled', true);
     }
 }

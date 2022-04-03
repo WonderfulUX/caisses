@@ -77,6 +77,8 @@ body{
         text-align: center;
         width: 100px;
         height: 45px;
+        position: relative;
+        transition: left 0.2s;
     }
     .lockInputFieldBasics{
         background-color: #fff;
@@ -89,6 +91,16 @@ body{
         margin-bottom: 10px;
         background-color: hsl(0, 100%, 90%);
         border: 2px solid red;
+    }
+    .lockInputFieldErrorAnimate{
+        animation: shake 0.3s linear;
+    }
+    @keyframes shake {
+        20%{left: 20px}
+        40%{left: -20px}
+        60%{left: 5px}
+        80%{left: -5px}
+        100%{left: 0px}
     }
     button{
         width: 150px;
