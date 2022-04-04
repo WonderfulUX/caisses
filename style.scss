@@ -175,12 +175,12 @@ header{
     }
 
 }
-.defaultGrid{
-    grid-template-columns: 0% 99%;
-}
-.newGrid{
-    grid-template-columns: 1fr minmax(280px,30%);
-}
+// .defaultGrid{
+//     grid-template-columns: 0% 99%;
+// }
+// .newGrid{
+//     grid-template-columns: 1fr minmax(280px,30%);
+// }
 
 #modalContainer{
     position: absolute;
@@ -285,8 +285,7 @@ header{
 #Main{
     height: 80vh;
     position: relative;
-    display: grid;
-    gap: 5px;
+    display: flex;
     &>div{
         background-color: $light_grey;
         height: 100%;
@@ -306,9 +305,12 @@ header{
         z-index: 20;
     }
     #Produits{
-        width: 100%;
+        width: 0%;
         overflow-x: hidden;
         overflow-y: scroll;
+        position: relative;
+        left: -1rem;
+        padding: 1rem;
         &::-webkit-scrollbar{
             width: 10px;
         }

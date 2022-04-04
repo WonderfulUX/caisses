@@ -262,16 +262,6 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   margin-right: 4px;
 }
 
-.defaultGrid {
-  -ms-grid-columns: 0% 99%;
-      grid-template-columns: 0% 99%;
-}
-
-.newGrid {
-  -ms-grid-columns: 1fr minmax(280px, 30%);
-      grid-template-columns: 1fr minmax(280px, 30%);
-}
-
 #modalContainer {
   position: absolute;
   top: 0;
@@ -419,9 +409,9 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 #Main {
   height: 80vh;
   position: relative;
-  display: -ms-grid;
-  display: grid;
-  gap: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 #Main > div {
@@ -446,9 +436,12 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 }
 
 #Main #Produits {
-  width: 100%;
+  width: 0%;
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
+  left: -1rem;
+  padding: 1rem;
 }
 
 #Main #Produits::-webkit-scrollbar {
