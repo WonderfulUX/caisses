@@ -5,6 +5,8 @@ let draggeableEle = document.querySelectorAll(".dragList");
 let posX, xOffset, startingPoint, xScrollOffset ;
 //Blocks display
 let mainBlocks = document.querySelector('#Main');
+let productsBlock = document.querySelector('.productsBlock');
+let selectionsBlock = document.querySelector('.selectionsBlock');
 //Product display
 let cliquableCategories = Array.from(document.querySelectorAll('.category'));
 let cliquableSubCategories = Array.from(document.querySelectorAll('.subCategory'));
@@ -42,9 +44,10 @@ let lockInputForm = document.getElementById('lockInput');
 productDisplayBtn.addEventListener('click', ()=>{
     (filteredList.innerHTML!=='')?clearSearch.classList.remove('d-none'):'';
     let tableRows = document.querySelectorAll('#Selection tr');
-    mainBlocks.classList.toggle('newGrid');
-    if(mainBlocks.classList.contains('newGrid')){
-        cells = document.querySelectorAll('.toHide');
+    productsBlock.classList.toggle('productsBlockNewWidth');
+    selectionsBlock.classList.toggle('selectionsBlockNewWidth');
+    let cells = document.querySelectorAll('.toHide');
+    if(productsBlock.classList.contains('productsBlockNewWidth')){
         cells.forEach(cell=>{
             cell.style.display= 'none';
         })

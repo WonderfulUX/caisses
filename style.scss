@@ -10,7 +10,7 @@ a {
   text-decoration: none;
 }
 body button:active, body button:focus, input[type=submit]:active, input[type=submit]:focus,
-input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus, textarea:focus{
+input[type=text]:focus,input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus, textarea:focus{
     outline: none;
 }
 
@@ -91,6 +91,7 @@ body{
         margin-bottom: 10px;
         background-color: hsl(0, 100%, 90%);
         border: 2px solid red;
+        outline: red;
     }
     .lockInputFieldErrorAnimate{
         animation: shake 0.3s linear;
@@ -175,13 +176,6 @@ header{
     }
 
 }
-// .defaultGrid{
-//     grid-template-columns: 0% 99%;
-// }
-// .newGrid{
-//     grid-template-columns: 1fr minmax(280px,30%);
-// }
-
 #modalContainer{
     position: absolute;
     top: 0;
@@ -289,7 +283,6 @@ header{
     &>div{
         background-color: $light_grey;
         height: 100%;
-        border-radius: $border_radius;
     }
     #displayProductsBtn{
         position: absolute;
@@ -304,13 +297,14 @@ header{
         box-shadow: $shadowProductButton;
         z-index: 20;
     }
-    #Produits{
+    .productsBlock{
         width: 0%;
         overflow-x: hidden;
         overflow-y: scroll;
-        position: relative;
-        left: -1rem;
         padding: 1rem;
+        margin-right: 5px;
+        border-radius: 0 6px 6px 0;
+        transition: width 0.15s linear;
         &::-webkit-scrollbar{
             width: 10px;
         }
@@ -404,12 +398,16 @@ header{
             pointer-events: none;
         }
     }
-    #Selection{
+    .productsBlockNewWidth{
+        width: 70%;
+    }
+    .selectionsBlock{
         width: 100%;
-        position: relative;
         display: grid;
         grid-template-rows: 40px 1fr auto;
         grid-template-columns: 1fr;
+        transition: width 0.15s linear;
+        border-radius: $border_radius;
         #tableContainer{
             width: 100%;
             height: calc(72vh - 130px);
@@ -494,6 +492,10 @@ header{
             width: 120px;
             text-align: right;
         }
+    }
+    .selectionsBlockNewWidth{
+        width: 30%;
+        min-width: 280px;
     }
     #SearchBlock{
         display: inline-block;

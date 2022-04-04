@@ -237,13 +237,14 @@ function checkQuantity(){
 function updateModalData(ele){
     // console.log('updating Modal Data');
     if(ele.classList.contains('product')){
-        // console.log('Click on product');
+        modalAdd.innerText="Ajouter";
         modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
         modalProductName.innerText = ele.children[0].children[0].innerText;
         modalProductPrice.innerText = ele.children[0].children[1].innerText;
         checkQuantity();
     }
     else{
+        modalAdd.innerText="Modifier";
         // console.log(ele);
         // console.log('already Selected bool true');
         alreadySelected = Boolean(true);

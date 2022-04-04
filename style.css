@@ -12,7 +12,7 @@ a {
 }
 
 body button:active, body button:focus, input[type=submit]:active, input[type=submit]:focus,
-input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus, textarea:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus, textarea:focus {
   outline: none;
 }
 
@@ -134,6 +134,7 @@ body {
   margin-bottom: 10px;
   background-color: #ffcccc;
   border: 2px solid red;
+  outline: red;
 }
 
 #ScreenLock .lockInputFieldErrorAnimate {
@@ -417,7 +418,6 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
 #Main > div {
   background-color: #f6f6f6;
   height: 100%;
-  border-radius: 6px;
 }
 
 #Main #displayProductsBtn {
@@ -435,36 +435,38 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   z-index: 20;
 }
 
-#Main #Produits {
+#Main .productsBlock {
   width: 0%;
   overflow-x: hidden;
   overflow-y: scroll;
-  position: relative;
-  left: -1rem;
   padding: 1rem;
+  margin-right: 5px;
+  border-radius: 0 6px 6px 0;
+  -webkit-transition: width 0.15s linear;
+  transition: width 0.15s linear;
 }
 
-#Main #Produits::-webkit-scrollbar {
+#Main .productsBlock::-webkit-scrollbar {
   width: 10px;
 }
 
-#Main #Produits::-webkit-scrollbar-track {
+#Main .productsBlock::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-#Main #Produits::-webkit-scrollbar-thumb {
+#Main .productsBlock::-webkit-scrollbar-thumb {
   background-color: #7e7d8c;
   border-radius: 6px;
 }
 
-#Main #Produits .dragList {
+#Main .productsBlock .dragList {
   overflow-x: scroll;
   cursor: -webkit-grab;
   cursor: grab;
 }
 
-#Main #Produits .itemList {
+#Main .productsBlock .itemList {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -474,11 +476,11 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
           user-select: none;
 }
 
-#Main #Produits .dragList::-webkit-scrollbar {
+#Main .productsBlock .dragList::-webkit-scrollbar {
   display: none;
 }
 
-#Main #Produits li {
+#Main .productsBlock li {
   height: 80px;
   width: 120px;
   background-color: #525252;
@@ -495,7 +497,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   cursor: pointer;
 }
 
-#Main #Produits .productDetails {
+#Main .productsBlock .productDetails {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -505,27 +507,27 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   letter-spacing: 0.3px;
 }
 
-#Main #Produits .subCategoryList {
+#Main .productsBlock .subCategoryList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#Main #Produits .subCategoryList li {
+#Main .productsBlock .subCategoryList li {
   background-color: #A5A5A5;
 }
 
-#Main #Produits .productList {
+#Main .productsBlock .productList {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
-#Main #Produits .productList li {
+#Main .productsBlock .productList li {
   color: #f6f6f6;
   height: 120px;
 }
 
-#Main #Produits #SearchInput {
+#Main .productsBlock #SearchInput {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -538,21 +540,21 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   border-radius: 6px;
 }
 
-#Main #Produits .selected, #Main #Produits .subCategoryList .selected {
+#Main .productsBlock .selected, #Main .productsBlock .subCategoryList .selected {
   -webkit-box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
           box-shadow: inset 6px 6px 6px rgba(0, 0, 0, 0.25);
   background-color: #f8b312;
   color: #f6f6f6;
 }
 
-#Main #Produits .product, #Main #Produits .category, #Main #Produits .subCategory {
+#Main .productsBlock .product, #Main .productsBlock .category, #Main .productsBlock .subCategory {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#Main #Produits .product {
+#Main .productsBlock .product {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -562,7 +564,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
           justify-content: space-between;
 }
 
-#Main #Produits .category, #Main #Produits .subCategory {
+#Main .productsBlock .category, #Main .productsBlock .subCategory {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -571,56 +573,62 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
           justify-content: center;
 }
 
-#Main #Produits .subCategory, #Main #Produits .product {
+#Main .productsBlock .subCategory, #Main .productsBlock .product {
   display: none;
 }
 
-#Main #Produits .pname, #Main #Produits .pprice {
+#Main .productsBlock .pname, #Main .productsBlock .pprice {
   pointer-events: none;
 }
 
-#Main #Selection {
+#Main .productsBlockNewWidth {
+  width: 70%;
+}
+
+#Main .selectionsBlock {
   width: 100%;
-  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 40px 1fr auto;
       grid-template-rows: 40px 1fr auto;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
+  -webkit-transition: width 0.15s linear;
+  transition: width 0.15s linear;
+  border-radius: 6px;
 }
 
-#Main #Selection #tableContainer {
+#Main .selectionsBlock #tableContainer {
   width: 100%;
   height: calc(72vh - 130px);
   overflow-y: auto;
 }
 
-#Main #Selection thead {
+#Main .selectionsBlock thead {
   height: 30px;
   background-color: #7e7d8c;
   color: #f6f6f6;
   line-height: 30px;
 }
 
-#Main #Selection tr {
+#Main .selectionsBlock tr {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 20% 1fr (10%)[4] auto;
       grid-template-columns: 20% 1fr repeat(4, 10%) auto;
 }
 
-#Main #Selection .opZero {
+#Main .selectionsBlock .opZero {
   opacity: 0;
 }
 
-#Main #Selection tbody, #Main #Selection thead {
+#Main .selectionsBlock tbody, #Main .selectionsBlock thead {
   width: 98%;
   text-transform: uppercase;
   font-size: 13px;
 }
 
-#Main #Selection tbody tr {
+#Main .selectionsBlock tbody tr {
   position: relative;
   height: 40px;
   border-radius: 4px;
@@ -632,26 +640,26 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   cursor: pointer;
 }
 
-#Main #Selection tr button {
+#Main .selectionsBlock tr button {
   border: none;
   background-color: transparent;
   width: 40px;
 }
 
-#Main #Selection tr button img {
+#Main .selectionsBlock tr button img {
   pointer-events: none;
 }
 
-#Main #Selection .producStock, #Main #Selection .productQuantity, #Main #Selection .productPrice, #Main #Selection .productSubTotal {
+#Main .selectionsBlock .producStock, #Main .selectionsBlock .productQuantity, #Main .selectionsBlock .productPrice, #Main .selectionsBlock .productSubTotal {
   text-align: right;
   padding-right: 10%;
 }
 
-#Main #Selection .productReference, #Main #Selection .productName {
+#Main .selectionsBlock .productReference, #Main .selectionsBlock .productName {
   padding-left: 5%;
 }
 
-#Main #Selection #Summary {
+#Main .selectionsBlock #Summary {
   bottom: 20px;
   right: 1rem;
   text-transform: uppercase;
@@ -667,7 +675,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
           align-items: flex-end;
 }
 
-#Main #Selection #PaymentButton {
+#Main .selectionsBlock #PaymentButton {
   background-color: #00A400;
   color: #f6f6f6;
   border-radius: 6px;
@@ -678,26 +686,31 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   font-size: 13px;
 }
 
-#Main #Selection #PaymentButton span {
+#Main .selectionsBlock #PaymentButton span {
   display: inline-block;
 }
 
-#Main #Selection #PaymentButton span::before {
+#Main .selectionsBlock #PaymentButton span::before {
   content: url(./ressources/CarteBancaire.svg);
   vertical-align: middle;
   padding-right: 10px;
 }
 
-#Main #Selection #TotalAmount {
+#Main .selectionsBlock #TotalAmount {
   font-size: 25px;
   font-weight: 800;
 }
 
-#Main #Selection #TotalValue {
+#Main .selectionsBlock #TotalValue {
   display: inline-block;
   margin-left: 10px;
   width: 120px;
   text-align: right;
+}
+
+#Main .selectionsBlockNewWidth {
+  width: 30%;
+  min-width: 280px;
 }
 
 #Main #SearchBlock {
