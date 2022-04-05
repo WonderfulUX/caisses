@@ -304,7 +304,7 @@ header{
         padding: 1rem;
         margin-right: 5px;
         border-radius: 0 6px 6px 0;
-        transition: width 0.15s linear;
+        transition: width 0.2s linear;
         &::-webkit-scrollbar{
             width: 10px;
         }
@@ -406,7 +406,7 @@ header{
         display: grid;
         grid-template-rows: 40px 1fr auto;
         grid-template-columns: 1fr;
-        transition: width 0.15s linear;
+        transition: width 0.2s linear;
         border-radius: $border_radius;
         #tableContainer{
             width: 100%;
