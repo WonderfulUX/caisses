@@ -442,8 +442,8 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   padding: 1rem;
   margin-right: 5px;
   border-radius: 0 6px 6px 0;
-  -webkit-transition: width 0.15s linear;
-  transition: width 0.15s linear;
+  -webkit-transition: width 0.2s linear;
+  transition: width 0.2s linear;
 }
 
 #Main .productsBlock::-webkit-scrollbar {
@@ -593,8 +593,8 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
       grid-template-rows: 40px 1fr auto;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -webkit-transition: width 0.15s linear;
-  transition: width 0.15s linear;
+  -webkit-transition: width 0.2s linear;
+  transition: width 0.2s linear;
   border-radius: 6px;
 }
 

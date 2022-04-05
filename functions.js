@@ -224,6 +224,7 @@ function checkQuantity(){
         modalQuantity.innerText = dataCell[0].parentElement.children[3].innerText;
         // console.log(`Already selected`);
         alreadySelected = Boolean(true);
+        modalAdd.innerText="Modifier";
     }
     else{
         // console.log('Selection List empty');
@@ -231,13 +232,13 @@ function checkQuantity(){
         alreadySelected = Boolean(false);
         // console.log('ELSE 2');
         modalQuantity.innerText = 1;
+        modalAdd.innerText="Ajouter";
     }
 }
 
 function updateModalData(ele){
     // console.log('updating Modal Data');
     if(ele.classList.contains('product')){
-        modalAdd.innerText="Ajouter";
         modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
         modalProductName.innerText = ele.children[0].children[0].innerText;
         modalProductPrice.innerText = ele.children[0].children[1].innerText;
