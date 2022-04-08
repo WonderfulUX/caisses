@@ -211,7 +211,7 @@ function openModal(e){
     modalContainer.style.display = 'flex';
 }
 
-function checkQuantity(){
+function checkSelectionQuantity(){
     // console.log('**********************');
     // console.log('Checking quantity from selection list');
     let selectionList = Array.from(document.querySelectorAll('.selectionLine .productName'));
@@ -242,7 +242,7 @@ function updateModalData(ele){
         modalProductImg.src = 'ressources/'+ele.style.backgroundImage.slice(18,-2);
         modalProductName.innerText = ele.children[0].children[0].innerText;
         modalProductPrice.innerText = ele.children[0].children[1].innerText;
-        checkQuantity();
+        checkSelectionQuantity();
     }
     else{
         modalAdd.innerText="Modifier";
@@ -264,6 +264,16 @@ function updateModalData(ele){
     }
     updateSubTotal();
 }
+
+function checkModalQuantity(){
+    if(modalQuantity.innerText === '1') {
+        minusBtn.classList.add('inactive');
+    }
+    else if(minusBtn.classList.contains('inactive')){
+        minusBtn.classList.remove('inactive');
+    }
+}
+
 function updateSubTotal(){
     // console.log("Updating modal Subtotal");
     let tempModalProductPrice = modalProductPrice.innerText.replace(',','.');
@@ -308,13 +318,25 @@ function addNewLine(){
         cells.forEach(cell=>{
             cell.style.display= 'none';
         });
+        checkLines();
 }
 
 function removeLine(e){
     e.stopPropagation();
     e.target.parentElement.parentElement.remove();
     updateTotal();
+    checkLines();
 };
+
+function checkLines(){
+    let tableBodyLength = document.querySelectorAll('.selectionLine').length;
+    if(tableBodyLength=== 0){
+        paymentBtn.classList.add('inactive');
+    }
+    else{
+        paymentBtn.classList.remove('inactive');
+    }
+}
 
 function updateTotal(){
     // console.log("Updating total");

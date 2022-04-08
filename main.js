@@ -20,8 +20,8 @@ let SearchInput = document.getElementById('SearchInput');
 let filteredList = document.getElementById('FilteredList');
 let clearSearch = document.querySelector('.clearSearch');
 //Modal
-let minusBtn = document.getElementById('minusBtn');
-let plusBtn = document.getElementById('plusBtn');
+let minusBtn = document.querySelector('.modalQuantityButtons .minusBtn');
+let plusBtn = document.querySelector('.plusBtn');
 let modalQuantity = document.getElementById('Quantity');
 let modalSubTotal = document.getElementById('modalSubTotal');
 let modalProductImg = document.getElementById('modaleImg');
@@ -33,6 +33,7 @@ let modalAdd = document.querySelector('.add');
 let totalValue = document.getElementById('TotalValue');
 //Selection
 let alreadySelected = Boolean(false) ;
+let paymentBtn = document.querySelector('.paymentButton');
 //ScreenLock
 let pwdIsWrong = Boolean(false);
 let ScreenLockInterface = document.getElementById('ScreenLock');
@@ -108,11 +109,13 @@ minusBtn.addEventListener('click',()=>{
     if(parseInt(modalQuantity.innerText)>=2){
         modalQuantity.innerText = parseInt(modalQuantity.innerText)-1;
         updateSubTotal();
+        checkModalQuantity();
     }
 })
 plusBtn.addEventListener('click',()=>{
     modalQuantity.innerText = parseInt(modalQuantity.innerText)+1;
     updateSubTotal();
+    checkModalQuantity();
 })
 
 

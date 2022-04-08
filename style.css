@@ -407,6 +407,12 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   color: #f6f6f6;
 }
 
+.inactive {
+  opacity: 0.3;
+  cursor: auto;
+  pointer-events: none;
+}
+
 #Main {
   height: 80vh;
   position: relative;
@@ -675,7 +681,7 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
           align-items: flex-end;
 }
 
-#Main .selectionsBlock #PaymentButton {
+#Main .selectionsBlock .paymentButton {
   background-color: #00A400;
   color: #f6f6f6;
   border-radius: 6px;
@@ -686,11 +692,11 @@ header #Network #LocalStatus::before, header #Network #InternetStatus::before {
   font-size: 13px;
 }
 
-#Main .selectionsBlock #PaymentButton span {
+#Main .selectionsBlock .paymentButton span {
   display: inline-block;
 }
 
-#Main .selectionsBlock #PaymentButton span::before {
+#Main .selectionsBlock .paymentButton span::before {
   content: url(./ressources/CarteBancaire.svg);
   vertical-align: middle;
   padding-right: 10px;

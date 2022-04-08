@@ -275,6 +275,11 @@ header{
         color: $light_grey;
     }
 }
+.inactive{
+    opacity: 0.3;
+    cursor: auto;
+    pointer-events: none;
+}
 
 #Main{
     height: 80vh;
@@ -464,7 +469,7 @@ header{
             flex-direction: column;
             align-items: flex-end;
         }
-        #PaymentButton{
+        .paymentButton{
             background-color: $green_button;
             color: $light_grey;
             border-radius: $border_radius;
