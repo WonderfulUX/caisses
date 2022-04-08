@@ -263,6 +263,7 @@ function updateModalData(ele){
         modalProductPrice.innerText = ele.children[4].innerText;
     }
     updateSubTotal();
+    checkModalQuantity();
 }
 
 function checkModalQuantity(){
