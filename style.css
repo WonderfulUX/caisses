@@ -42,6 +42,27 @@ body {
   font-family: 'Mulish', sans-serif;
 }
 
+#mobiles {
+  display: none;
+  background-color: #52515c;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100vh;
+  z-index: 200;
+  position: absolute;
+}
+
+#mobiles p {
+  color: white;
+  width: 90%;
+  font-size: 20px;
+}
+
 #ScreenLock {
   position: absolute;
   width: 100%;
@@ -792,6 +813,14 @@ footer #LogOut {
   }
   #Main #SearchBlock {
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px), (max-height: 600px) {
+  #mobiles {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 /*# sourceMappingURL=style.css.map */
